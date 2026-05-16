@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronRight, ChevronLeft, Check, Info, Layout, ShoppingCart, Cpu, HelpCircle } from 'lucide-react';
 import { VISUAL_STYLES } from '../constants/styles';
@@ -10,8 +10,8 @@ import { ProjectType, FunnelState } from '../types';
 import { createClient } from '@/lib/supabase/client';
 
 export default function FunnelContainer() {
-  const [isMounted, setIsMounted] = React.useState(false);
-  const [state, setState] = useState<FunnelState & { otherValue: string }>({
+  const [isMounted, setIsMounted] = useState(false);
+  const [state, setState] = useState<FunnelState>({
     currentStep: 0,
     projectType: null,
     answers: {},
@@ -20,17 +20,14 @@ export default function FunnelContainer() {
       email: '',
       businessName: '',
     },
-    otherValue: '',
   });
 
-  // const supabase = createClient(); // Moved inside handleSubmit to prevent build-time SSR errors
-
-  React.useEffect(() => {
+  useEffect(() => {
     setIsMounted(true);
   }, []);
 
   // Safe skip logic for step 5
-  React.useEffect(() => {
+  useEffect(() => {
     if (state.currentStep === 5) {
       const isEcommerce = state.projectType === 'ecommerce' || state.projectType === 'website_ecommerce';
       const isWebApp = state.projectType === 'webapp';
