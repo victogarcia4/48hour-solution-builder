@@ -1,6 +1,8 @@
-# SaaS Factory V4
+# 48-Hour Solution Builder
 
-Template production-ready para crear aplicaciones SaaS con desarrollo asistido por IA. Filosofia Agent-First: el usuario dice que quiere, el agente construye todo.
+Interactive funnel and lead capture system for 48-Hour Studio. Built with Neobrutalist design and Supabase integration.
+
+**Live Site:** [https://48hstudio.vercel.app](https://48hstudio.vercel.app)
 
 ## Que incluye
 
