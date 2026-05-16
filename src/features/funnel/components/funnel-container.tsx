@@ -23,7 +23,7 @@ export default function FunnelContainer() {
     otherValue: '',
   });
 
-  const supabase = createClient();
+  // const supabase = createClient(); // Moved inside handleSubmit to prevent build-time SSR errors
 
   React.useEffect(() => {
     setIsMounted(true);
@@ -41,7 +41,9 @@ export default function FunnelContainer() {
     }));
   };
 
-  const handleSubmit = async () => {
+    // Initialize supabase only when needed
+    const supabase = createClient();
+    
     // Determine the recommended plan and price (moved logic here for saving)
     let recommendedPlan = 'Starter Landing';
     if (state.projectType === 'ecommerce' || state.projectType === 'website_ecommerce') recommendedPlan = 'Online Store Launch';

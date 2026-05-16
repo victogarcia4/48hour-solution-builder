@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import React, { useState, useEffect } from 'react';
 import { createClient } from '@/lib/supabase/client';
@@ -15,8 +15,7 @@ export default function AdminPage() {
   const [messages, setMessages] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
 
-  // Initialize supabase inside the component to avoid top-level side effects
-  const supabase = createClient();
+  // Supabase initialized inside fetchData to avoid build-time environment variable issues
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
@@ -42,6 +41,7 @@ export default function AdminPage() {
   }, [isAuthenticated]);
 
   const fetchData = async () => {
+    const supabase = createClient();
     setLoading(true);
     const { data: leadsData } = await supabase
       .from('funnel_leads')

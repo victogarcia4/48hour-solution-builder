@@ -14,7 +14,7 @@ export const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
-  const supabase = createClient();
+  // const supabase = createClient(); // Moved inside handleSubmit to prevent build-time SSR errors
 
   React.useEffect(() => {
     setIsMounted(true);
@@ -24,6 +24,7 @@ export const Contact = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    const supabase = createClient();
     setIsSubmitting(true);
     
     try {
