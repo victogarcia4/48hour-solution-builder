@@ -41,19 +41,24 @@ export default function FunnelContainer() {
     }));
   };
 
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
   const handleSubmit = async () => {
+    setIsSubmitting(true);
+    console.log('Submitting funnel with state:', state);
+    
     // Initialize supabase only when needed
     const supabase = createClient();
     
-    // Determine the recommended plan and price (moved logic here for saving)
+    // Determine the recommended plan and price
     let recommendedPlan = 'Starter Landing';
     if (state.projectType === 'ecommerce' || state.projectType === 'website_ecommerce') recommendedPlan = 'Online Store Launch';
-    if (state.projectType === 'webapp' || state.answers.pages === '10+') recommendedPlan = 'Business Platform Lite';
+    if (state.projectType === 'webapp') recommendedPlan = 'Business Platform Lite';
     
     const price = PLAN_DETAILS[recommendedPlan as keyof typeof PLAN_DETAILS]?.price || '$TBD';
 
     try {
-      await supabase.from('funnel_leads').insert({
+      const { data, error } = await supabase.from('funnel_leads').insert({
         name: state.contact.name,
         email: state.contact.email,
         business_name: state.contact.businessName,
@@ -65,11 +70,20 @@ export default function FunnelContainer() {
         recommended_plan: recommendedPlan,
         estimated_price: price
       });
+      
+      if (error) {
+        console.error('Error saving lead:', error);
+        alert('There was an error saving your project. Please try again.');
+      } else {
+        console.log('Lead saved successfully:', data);
+        nextStep();
+      }
     } catch (error) {
-      console.error('Error saving lead:', error);
+      console.error('Unexpected error saving lead:', error);
+      alert('An unexpected error occurred. Please try again.');
+    } finally {
+      setIsSubmitting(false);
     }
-    
-    nextStep();
   };
 
   const renderStep = () => {
@@ -316,11 +330,11 @@ export default function FunnelContainer() {
                 />
               </div>
               <button 
-                disabled={!state.contact.name || !state.contact.email}
+                disabled={!state.contact.name || !state.contact.email || isSubmitting}
                 onClick={handleSubmit} 
                 className="brutal-btn bg-gray-500 text-white w-full py-6 text-2xl disabled:opacity-50 disabled:cursor-not-allowed hover:bg-black transition-all shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] active:shadow-none active:translate-x-2 active:translate-y-2"
               >
-                GENERATE SUMMARY
+                {isSubmitting ? 'GENERATING...' : 'GENERATE SUMMARY'}
               </button>
             </div>
           </div>

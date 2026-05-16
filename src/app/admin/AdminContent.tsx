@@ -43,19 +43,37 @@ export default function AdminPage() {
   const fetchData = async () => {
     const supabase = createClient();
     setLoading(true);
-    const { data: leadsData } = await supabase
-      .from('funnel_leads')
-      .select('*')
-      .order('created_at', { ascending: false });
+    console.log('Fetching admin data...');
     
-    const { data: messagesData } = await supabase
-      .from('contact_messages')
-      .select('*')
-      .order('created_at', { ascending: false });
+    try {
+      const { data: leadsData, error: leadsError } = await supabase
+        .from('funnel_leads')
+        .select('*')
+        .order('created_at', { ascending: false });
+      
+      if (leadsError) {
+        console.error('Error fetching leads:', leadsError);
+      } else {
+        console.log('Leads fetched:', leadsData?.length || 0);
+        setLeads(leadsData || []);
+      }
+      
+      const { data: messagesData, error: messagesError } = await supabase
+        .from('contact_messages')
+        .select('*')
+        .order('created_at', { ascending: false });
 
-    setLeads(leadsData || []);
-    setMessages(messagesData || []);
-    setLoading(false);
+      if (messagesError) {
+        console.error('Error fetching messages:', messagesError);
+      } else {
+        console.log('Messages fetched:', messagesData?.length || 0);
+        setMessages(messagesData || []);
+      }
+    } catch (err) {
+      console.error('Unexpected error in fetchData:', err);
+    } finally {
+      setLoading(false);
+    }
   };
 
   const handleLogout = () => {
