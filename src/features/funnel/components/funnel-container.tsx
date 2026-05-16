@@ -29,6 +29,18 @@ export default function FunnelContainer() {
     setIsMounted(true);
   }, []);
 
+  // Safe skip logic for step 5
+  React.useEffect(() => {
+    if (state.currentStep === 5) {
+      const isEcommerce = state.projectType === 'ecommerce' || state.projectType === 'website_ecommerce';
+      const isWebApp = state.projectType === 'webapp';
+      
+      if (!isEcommerce && !isWebApp) {
+        nextStep();
+      }
+    }
+  }, [state.currentStep, state.projectType]);
+
   if (!isMounted) return <div className="h-[500px]" />;
 
   const nextStep = () => setState(s => ({ ...s, currentStep: s.currentStep + 1 }));
@@ -234,14 +246,13 @@ export default function FunnelContainer() {
         );
 
       case 5: // Project Specifics
-        if (state.projectType === 'landing' || state.projectType === 'not_sure') {
-          // If landing or not sure, we can go straight to contact
-          nextStep();
-          return null;
-        }
-
-        const isEcommerce = state.projectType === 'ecommerce';
+        // We use a safe check here. If this step is skipped, the useEffect below will handle it.
+        const isEcommerce = state.projectType === 'ecommerce' || state.projectType === 'website_ecommerce';
         const isWebApp = state.projectType === 'webapp';
+
+        if (!isEcommerce && !isWebApp) {
+          return null; // The useEffect below will advance the step
+        }
 
         return (
           <div className="max-w-2xl mx-auto w-full">
@@ -396,12 +407,12 @@ export default function FunnelContainer() {
             </div>
 
             <div className="flex flex-col sm:flex-row justify-center gap-6">
-              <button 
-                onClick={() => window.location.reload()} 
-                className="brutal-btn bg-black text-white text-3xl px-16 py-8 hover:bg-brutal-green transition-all"
+              <a 
+                href="#contact"
+                className="brutal-btn bg-black text-white text-3xl px-16 py-8 hover:bg-brutal-green transition-all inline-block"
               >
                 RESERVE MY 48H SLOT
-              </button>
+              </a>
             </div>
             <p className="mt-8 font-black uppercase text-xs opacity-50">No credit card required to start the review.</p>
           </div>
