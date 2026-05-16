@@ -22,6 +22,8 @@ export default function FunnelContainer() {
     },
   });
 
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
   useEffect(() => {
     setIsMounted(true);
   }, []);
@@ -49,8 +51,6 @@ export default function FunnelContainer() {
       answers: { ...s.answers, [key]: value }
     }));
   };
-
-  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSubmit = async () => {
     setIsSubmitting(true);
