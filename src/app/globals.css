@@ -1,0 +1,37 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@layer base {
+  body {
+    @apply bg-brutal-gray text-brutal-black font-brutal;
+  }
+}
+
+@layer components {
+  .brutal-card {
+    @apply bg-white border-4 border-black shadow-brutal p-6 transition-all duration-100;
+  }
+  
+  .brutal-card-hover {
+    @apply hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-brutal;
+  }
+
+  .brutal-btn {
+    @apply px-6 py-3 font-black uppercase border-4 border-black shadow-brutal transition-all duration-100 active:translate-x-[4px] active:translate-y-[4px] active:shadow-none;
+  }
+
+  .brutal-btn-primary {
+    @apply bg-brutal-yellow text-black hover:bg-brutal-lime;
+  }
+
+  .brutal-btn-secondary {
+    @apply bg-white text-black hover:bg-brutal-cyan;
+  }
+
+  .brutal-input {
+    @apply w-full bg-white border-4 border-black shadow-brutal px-4 py-3 font-bold focus:outline-none focus:translate-x-[2px] focus:translate-y-[2px] focus:shadow-brutal transition-all duration-100;
+  }
+}
+
