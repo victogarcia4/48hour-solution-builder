@@ -7,6 +7,9 @@ import { VISUAL_STYLES } from '../constants/styles';
 import { INDUSTRIES, GOALS, PROJECT_TYPES } from '../constants/questions';
 import { PLAN_DETAILS } from '../constants/plans';
 import { ProjectType, FunnelState } from '../types';
+import { createClient } from '@/lib/supabase/client';
+
+const supabase = createClient();
 
 export default function FunnelContainer() {
   const [state, setState] = useState<FunnelState & { otherValue: string }>({
@@ -29,6 +32,34 @@ export default function FunnelContainer() {
       ...s,
       answers: { ...s.answers, [key]: value }
     }));
+  };
+
+  const handleSubmit = async () => {
+    // Determine the recommended plan and price (moved logic here for saving)
+    let recommendedPlan = 'Starter Landing';
+    if (state.projectType === 'ecommerce') recommendedPlan = 'Online Store';
+    if (state.projectType === 'webapp' || state.answers.pages === '10+') recommendedPlan = 'Platform Lite';
+    
+    const price = PLAN_DETAILS[recommendedPlan as keyof typeof PLAN_DETAILS]?.price || '$TBD';
+
+    try {
+      await supabase.from('funnel_leads').insert({
+        name: state.contact.name,
+        email: state.contact.email,
+        business_name: state.contact.businessName,
+        industry: state.answers.industry,
+        goal: state.answers.goal,
+        visual_style: state.answers.visualStyle,
+        project_type: state.projectType,
+        specific_details: state.answers,
+        recommended_plan: recommendedPlan,
+        estimated_price: price
+      });
+    } catch (error) {
+      console.error('Error saving lead:', error);
+    }
+    
+    nextStep();
   };
 
   const renderStep = () => {
@@ -274,7 +305,7 @@ export default function FunnelContainer() {
               </div>
               <button 
                 disabled={!state.contact.name || !state.contact.email}
-                onClick={nextStep} 
+                onClick={handleSubmit} 
                 className="brutal-btn bg-gray-500 text-white w-full py-6 text-2xl disabled:opacity-50 disabled:cursor-not-allowed hover:bg-black transition-all shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] active:shadow-none active:translate-x-2 active:translate-y-2"
               >
                 GENERATE SUMMARY
