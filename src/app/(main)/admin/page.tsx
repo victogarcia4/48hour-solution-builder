@@ -4,16 +4,19 @@ import React, { useState, useEffect } from 'react';
 import { createClient } from '@/lib/supabase/client';
 import { Layout, Users, MessageSquare, LogOut, ChevronRight, Download } from 'lucide-react';
 
-const supabase = createClient();
 const ADMIN_PASSWORD = 'Zulybeth97@';
 
 export default function AdminPage() {
+  const [isMounted, setIsMounted] = useState(false);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [password, setPassword] = useState('');
   const [activeTab, setActiveTab] = useState<'leads' | 'messages'>('leads');
   const [leads, setLeads] = useState<any[]>([]);
   const [messages, setMessages] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
+
+  // Initialize supabase inside the component to avoid top-level side effects
+  const supabase = createClient();
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
@@ -26,6 +29,7 @@ export default function AdminPage() {
   };
 
   useEffect(() => {
+    setIsMounted(true);
     if (localStorage.getItem('admin_auth') === 'true') {
       setIsAuthenticated(true);
     }
@@ -58,6 +62,8 @@ export default function AdminPage() {
     setIsAuthenticated(false);
     localStorage.removeItem('admin_auth');
   };
+
+  if (!isMounted) return null;
 
   if (!isAuthenticated) {
     return (
