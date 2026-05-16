@@ -6,33 +6,41 @@ export const PLAN_DETAILS = {
       'Up to 6 sections',
       'Mobile responsive design',
       'Contact form',
+      'WhatsApp/Phone/Email integration',
       'AI-assisted base copy',
       'Basic SEO',
-      '2 Revisions included'
+      'Publishing support',
+      'Up to 2 suggested changes'
     ]
   },
-  'Online Store': {
+  'Online Store Launch': {
     price: '$1,850',
     includes: [
       'Basic multipage website',
-      'Home, About, Store, Contact',
-      'Up to 10 initial products',
-      'Payment integration',
-      'Cart & Checkout functionality',
+      'Home, About, Services/Products, Store, Contact',
+      'Up to 10 initial products or services',
+      'Basic payment integration',
+      'Cart & checkout functionality',
       'Mobile responsive design',
-      '2 Revisions included'
+      'AI-assisted base copy',
+      'Basic SEO',
+      'Up to 2 suggested changes'
     ]
   },
-  'Platform Lite': {
+  'Business Platform Lite': {
     price: '$3,950+',
     includes: [
       'Multipage website',
-      'Custom web app / Dashboard',
-      'Lead capture system',
-      'Advanced automations',
-      'Database integration',
+      'Landing page section',
+      'Basic ecommerce',
+      'Simple custom web app',
+      'Advanced forms',
+      'Basic dashboard',
+      'Lead capture & organization',
+      'Basic payment integration',
+      'Simple automation',
       'Mobile responsive design',
-      '2 Revisions included'
+      'Up to 2 suggested changes'
     ]
   }
 };

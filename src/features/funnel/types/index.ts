@@ -1,4 +1,4 @@
-export type ProjectType = 'landing' | 'ecommerce' | 'webapp' | 'not_sure' | 'other';
+export type ProjectType = 'landing' | 'website' | 'ecommerce' | 'website_ecommerce' | 'webapp' | 'not_sure' | 'other';
 
 export type FunnelState = {
   currentStep: number;

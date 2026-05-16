@@ -44,8 +44,8 @@ export default function FunnelContainer() {
   const handleSubmit = async () => {
     // Determine the recommended plan and price (moved logic here for saving)
     let recommendedPlan = 'Starter Landing';
-    if (state.projectType === 'ecommerce') recommendedPlan = 'Online Store';
-    if (state.projectType === 'webapp' || state.answers.pages === '10+') recommendedPlan = 'Platform Lite';
+    if (state.projectType === 'ecommerce' || state.projectType === 'website_ecommerce') recommendedPlan = 'Online Store Launch';
+    if (state.projectType === 'webapp' || state.answers.pages === '10+') recommendedPlan = 'Business Platform Lite';
     
     const price = PLAN_DETAILS[recommendedPlan as keyof typeof PLAN_DETAILS]?.price || '$TBD';
 
@@ -115,7 +115,9 @@ export default function FunnelContainer() {
                     </div>
                     <p className="font-bold opacity-70">
                       {opt.id === 'landing' ? 'One page designed for maximum lead capture.' : 
+                       opt.id === 'website' ? 'Professional presence for your business or service.' : 
                        opt.id === 'ecommerce' ? 'A full online store to sell products or services.' : 
+                       opt.id === 'website_ecommerce' ? 'Complete business website with ecommerce integrated.' : 
                        opt.id === 'webapp' ? 'A custom platform with specific business logic.' : 
                        'Help us recommend the best solution for you.'}
                     </p>
@@ -323,11 +325,9 @@ export default function FunnelContainer() {
 
       case 7: // Final Summary
         const recommendedPlan = state.projectType === 'landing' ? 'Starter Landing' : 
-                                state.projectType === 'ecommerce' ? 'Online Store Launch' : 
+                                (state.projectType === 'ecommerce' || state.projectType === 'website_ecommerce') ? 'Online Store Launch' : 
                                 'Business Platform Lite';
-        const price = state.projectType === 'landing' ? '$650' : 
-                      state.projectType === 'ecommerce' ? '$1,850' : 
-                      '$3,950+';
+        const price = PLAN_DETAILS[recommendedPlan as keyof typeof PLAN_DETAILS]?.price || '$3,950+';
 
         return (
           <div className="text-center py-8">

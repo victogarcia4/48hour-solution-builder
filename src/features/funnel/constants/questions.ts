@@ -16,8 +16,7 @@ export const INDUSTRIES = [
 
 export const GOALS = [
   'Capture leads',
-  'Sell products online',
-  'Sell services online',
+  'Sell products or services online',
   'Schedule appointments',
   'Show portfolio',
   'Promote a personal brand',
@@ -28,9 +27,11 @@ export const GOALS = [
 ];
 
 export const PROJECT_TYPES = [
-  { id: 'landing', label: 'Landing Page' },
-  { id: 'website', label: 'Business Website' },
-  { id: 'ecommerce', label: 'Online Store' },
-  { id: 'webapp', label: 'Custom Web App' },
-  { id: 'not_sure', label: 'I am not sure' }
+  { id: 'landing', label: 'Landing page' },
+  { id: 'website', label: 'Website for a business or service' },
+  { id: 'ecommerce', label: 'Online store / ecommerce' },
+  { id: 'website_ecommerce', label: 'Website + ecommerce' },
+  { id: 'webapp', label: 'Website + ecommerce + custom web app' },
+  { id: 'not_sure', label: 'I am not sure' },
+  { id: 'other', label: 'Other' }
 ];
