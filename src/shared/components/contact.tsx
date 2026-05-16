@@ -3,9 +3,8 @@
 import React, { useState } from 'react';
 import { createClient } from '@/lib/supabase/client';
 
-const supabase = createClient();
-
 export const Contact = () => {
+  const [isMounted, setIsMounted] = React.useState(false);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -14,6 +13,14 @@ export const Contact = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+
+  const supabase = createClient();
+
+  React.useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  if (!isMounted) return null;
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();

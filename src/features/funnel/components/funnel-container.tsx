@@ -9,9 +9,8 @@ import { PLAN_DETAILS } from '../constants/plans';
 import { ProjectType, FunnelState } from '../types';
 import { createClient } from '@/lib/supabase/client';
 
-const supabase = createClient();
-
 export default function FunnelContainer() {
+  const [isMounted, setIsMounted] = React.useState(false);
   const [state, setState] = useState<FunnelState & { otherValue: string }>({
     currentStep: 0,
     projectType: null,
@@ -23,6 +22,14 @@ export default function FunnelContainer() {
     },
     otherValue: '',
   });
+
+  const supabase = createClient();
+
+  React.useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  if (!isMounted) return <div className="h-[500px]" />;
 
   const nextStep = () => setState(s => ({ ...s, currentStep: s.currentStep + 1 }));
   const prevStep = () => setState(s => ({ ...s, currentStep: Math.max(0, s.currentStep - 1) }));
