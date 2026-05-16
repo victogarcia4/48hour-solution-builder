@@ -41,6 +41,7 @@ export default function FunnelContainer() {
     }));
   };
 
+  const handleSubmit = async () => {
     // Initialize supabase only when needed
     const supabase = createClient();
     

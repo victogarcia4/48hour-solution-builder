@@ -62,13 +62,9 @@ export const Pricing = () => {
             Fast, transparent, and built to scale.
           </p>
           
-          <div className="brutal-card bg-white p-12 mb-12 shadow-[16px_16px_0px_0px_rgba(0,0,0,1)]">
-            <h3 className="text-3xl font-black uppercase mb-6">Want to see your custom price?</h3>
-            <p className="text-xl font-bold mb-10 opacity-80 uppercase leading-snug">
-              Every project is unique. To keep our 48-hour promise, we calculate your exact investment based on your specific needs, industry, and project complexity.
-            </p>
-            <a href="#funnel" className="brutal-btn bg-brutal-yellow text-black text-2xl px-12 py-6 inline-block">
-              START THE FUNNEL TO SEE PRICING
+          <div className="mb-12">
+            <a href="#funnel" className="brutal-btn bg-brutal-yellow text-black text-3xl px-16 py-8 inline-block shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] hover:bg-white transition-all">
+              SEE MY PRICE NOW
             </a>
           </div>
 
