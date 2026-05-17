@@ -23,6 +23,7 @@ export default function FunnelContainer() {
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [saveWarning, setSaveWarning] = useState('');
 
   useEffect(() => {
     setIsMounted(true);
@@ -52,8 +53,18 @@ export default function FunnelContainer() {
     }));
   };
 
-  const handleSubmit = async () => {
+  const isValidEmail = (email: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim());
+
+  const handleSubmit = async (event?: React.FormEvent) => {
+    event?.preventDefault();
+
+    if (!state.contact.name.trim() || !isValidEmail(state.contact.email)) {
+      setSaveWarning('Please add a valid name and work email.');
+      return;
+    }
+
     setIsSubmitting(true);
+    setSaveWarning('');
     console.log('Submitting funnel with state:', state);
     
     // Initialize supabase only when needed
@@ -68,9 +79,9 @@ export default function FunnelContainer() {
 
     try {
       const { data, error } = await supabase.from('funnel_leads').insert({
-        name: state.contact.name,
-        email: state.contact.email,
-        business_name: state.contact.businessName,
+        name: state.contact.name.trim(),
+        email: state.contact.email.trim(),
+        business_name: state.contact.businessName.trim() || null,
         industry: state.answers.industry,
         goal: state.answers.goal,
         visual_style: state.answers.visualStyle,
@@ -82,16 +93,22 @@ export default function FunnelContainer() {
       
       if (error) {
         console.error('Error saving lead:', error);
-        alert('There was an error saving your project. Please try again.');
+        setSaveWarning('Your summary is ready, but the lead could not be saved to the database.');
       } else {
         console.log('Lead saved successfully:', data);
-        nextStep();
       }
     } catch (error) {
       console.error('Unexpected error saving lead:', error);
-      alert('An unexpected error occurred. Please try again.');
+      setSaveWarning('Your summary is ready, but the lead could not be saved to the database.');
     } finally {
+      localStorage.setItem('latest_funnel_summary', JSON.stringify({
+        ...state,
+        submittedAt: new Date().toISOString(),
+        recommendedPlan,
+        estimatedPrice: price
+      }));
       setIsSubmitting(false);
+      nextStep();
     }
   };
 
@@ -110,7 +127,7 @@ export default function FunnelContainer() {
               onClick={nextStep} 
               className="brutal-btn bg-black text-white text-3xl px-16 py-8 hover:bg-brutal-pink transition-all"
             >
-              START THE FUNNEL
+              START HERE
             </button>
           </div>
         );
@@ -306,10 +323,11 @@ export default function FunnelContainer() {
         return (
           <div className="max-w-xl mx-auto w-full">
             <h3 className="text-4xl font-black uppercase mb-12 text-center">LAST STEP: WHO ARE WE BUILDING FOR?</h3>
-            <div className="space-y-8 text-left">
+            <form className="space-y-8 text-left" onSubmit={handleSubmit}>
               <div className="group">
                 <label className="block font-black uppercase text-xs mb-2 tracking-widest">YOUR NAME</label>
                 <input 
+                  required
                   type="text" 
                   value={state.contact.name}
                   onChange={e => setState(s => ({ ...s, contact: { ...s.contact, name: e.target.value } }))}
@@ -320,6 +338,7 @@ export default function FunnelContainer() {
               <div className="group">
                 <label className="block font-black uppercase text-xs mb-2 tracking-widest">WORK EMAIL</label>
                 <input 
+                  required
                   type="email" 
                   value={state.contact.email}
                   onChange={e => setState(s => ({ ...s, contact: { ...s.contact, email: e.target.value } }))}
@@ -338,13 +357,18 @@ export default function FunnelContainer() {
                 />
               </div>
               <button 
-                disabled={!state.contact.name || !state.contact.email || isSubmitting}
-                onClick={handleSubmit} 
-                className="brutal-btn bg-gray-500 text-white w-full py-6 text-2xl disabled:opacity-50 disabled:cursor-not-allowed hover:bg-black transition-all shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] active:shadow-none active:translate-x-2 active:translate-y-2"
+                type="submit"
+                disabled={!state.contact.name.trim() || !isValidEmail(state.contact.email) || isSubmitting}
+                className="brutal-btn bg-black text-white w-full py-6 text-2xl disabled:bg-gray-500 disabled:opacity-50 disabled:cursor-not-allowed hover:bg-brutal-green hover:text-black transition-all shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] active:shadow-none active:translate-x-2 active:translate-y-2"
               >
                 {isSubmitting ? 'GENERATING...' : 'GENERATE SUMMARY'}
               </button>
-            </div>
+              {saveWarning && (
+                <p className="border-4 border-black bg-brutal-yellow p-4 text-sm font-black uppercase">
+                  {saveWarning}
+                </p>
+              )}
+            </form>
           </div>
         );
 
