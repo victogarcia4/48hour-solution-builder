@@ -22,7 +22,7 @@ export async function saveFunnelWithAddOnsAction(
       name: state.contact.name,
       email: state.contact.email,
       business_name: state.contact.businessName,
-      contact_phone: state.contact.phone || null,
+      // contact_phone: state.contact.phone || null, // TODO: Add to Supabase schema
 
       // Base questions (Q1-Q10)
       q1_project_type: state.projectType || state.q1_projectType,
@@ -74,7 +74,7 @@ export async function saveFunnelWithAddOnsAction(
       estimated_addon_price: state.estimatedAddOnPrice || 0,
       manual_review_flags: state.manualReviewFlags || [],
       requires_manual_review: state.requiresManualReview ?? false,
-      branch: state.branch || null,
+      // branch: state.branch || null, // TODO: Add branch column to Supabase schema
     };
 
     // Insert the lead

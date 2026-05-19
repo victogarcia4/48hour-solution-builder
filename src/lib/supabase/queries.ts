@@ -24,7 +24,7 @@ export async function saveFunnelWithAddOns(
       name: state.contact.name,
       email: state.contact.email,
       business_name: state.contact.businessName,
-      contact_phone: state.contact.phone || null,
+      // contact_phone: state.contact.phone || null, // TODO: Add to Supabase schema
 
       // Base questions (Q1-Q10)
       q1_project_type: state.projectType,
@@ -77,7 +77,7 @@ export async function saveFunnelWithAddOns(
       estimated_addon_price: calculateAddOnTotal(selectedAddOns),
       manual_review_flags: state.manualReviewFlags || [],
       requires_manual_review: state.requiresManualReview ?? false,
-      branch: determineBranchFromProjectType(state.projectType),
+      // branch: determineBranchFromProjectType(state.projectType), // TODO: Add branch column to Supabase schema
 
       // Timestamps
       started_at: state.startedAt,

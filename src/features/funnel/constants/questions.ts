@@ -250,7 +250,7 @@ export const ADDON_CATALOG = [
   {
     id: 'ai-images',
     name: 'AI-Generated Images Pack',
-    price: 75,
+    price: 150,
     description: 'Set of AI-generated images aligned to your style',
     suggestedIf: (state: Partial<FunnelState>) => !state.q7_hasImages,
     category: 'assets'
@@ -298,7 +298,7 @@ export const ADDON_CATALOG = [
   {
     id: 'calendly-integration',
     name: 'Calendly Integration',
-    price: 75,
+    price: 150,
     description: 'Embedded scheduling system',
     suggestedIf: () => false,
     category: 'integrations'
@@ -306,7 +306,7 @@ export const ADDON_CATALOG = [
   {
     id: 'whatsapp-integration',
     name: 'WhatsApp Integration',
-    price: 50,
+    price: 150,
     description: 'WhatsApp button and messaging',
     suggestedIf: () => false,
     category: 'integrations'
