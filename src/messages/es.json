@@ -1,0 +1,275 @@
+{
+  "navbar": {
+    "logo": "48H STUDIO",
+    "howItWorks": "Cómo funciona",
+    "team": "Nuestro Equipo",
+    "pricing": "Precios",
+    "faq": "Preguntas",
+    "cta": "Impulsa Tu Negocio Ahora"
+  },
+  "hero": {
+    "badge": "Disrumpiendo el Modelo de Agencia",
+    "title": "Construyamos Tu",
+    "titleHighlight": "Solución",
+    "titleEnd": "En Menos de 48 Horas",
+    "description": "Responde un cuestionario guiado, elige tu estilo y características, y obtén un sitio web profesional, tienda en línea o aplicación web personalizada a una fracción del precio de una agencia.",
+    "ctaPrimary": "Construir Mi Solución de 48 Horas",
+    "ctaSecondary": "Ver Precios",
+    "benefit1": "Sin llamadas largas",
+    "benefit2": "Sin formularios complicados",
+    "benefit3": "Sin esperas de semanas"
+  },
+  "problem": {
+    "title": "No necesitas otro proceso de agencia.",
+    "titleHighlight": "Necesitas tu sitio web en vivo.",
+    "description": "Los proyectos web tradicionales toman demasiado tiempo, cuestan demasiado, y piden al cliente explicar demasiados detalles técnicos. Los pequeños negocios necesitan un camino más simple.",
+    "painPoints": [
+      "Llamadas de descubrimiento largas",
+      "Propuestas confusas",
+      "Precios altos de agencia",
+      "Cronogramas de entrega lentos",
+      "Demasiadas preguntas técnicas",
+      "Se obliga a los clientes a escribir todo el contenido ellos mismos",
+      "MVPs o mockups en lugar de productos terminados"
+    ],
+    "agencyRealityTitle": "La Realidad de las Agencias",
+    "slowTitle": "Semanas de ida y vuelta",
+    "slowDesc": "El tiempo es dinero. Estás perdiendo ambos.",
+    "overheadTitle": "Gastos Ocultos",
+    "overheadDesc": "Estás pagando por su oficina elegante, no por tu código.",
+    "jargonTitle": "Jerga Técnica",
+    "jargonDesc": "Hablan en nubes. Hablamos en conversiones."
+  },
+  "promise": {
+    "title": "Terminado, Funcional y Listo para Lanzar",
+    "quote": "No entregamos un MVP incompleto, una maqueta estática o una página semi-construida.",
+    "sectionTitle": "Terminado Significa Terminado",
+    "description": "Después de que apruebes el plan y envíes los activos, la construcción comienza. El resultado es un producto terminado listo para representar tu negocio, capturar leads o vender servicios.",
+    "disclaimer": "La entrega en menos de 48 horas se aplica a proyectos dentro del alcance aprobado. Priorizamos la velocidad sin sacrificar la calidad.",
+    "inclusionsTitle": "Qué está incluido:",
+    "inclusions": [
+      "Diseño visual final aplicado",
+      "Navegación funcional",
+      "Diseño responsive",
+      "Formulario de contacto funcional",
+      "Botones CTA conectados",
+      "Optimización móvil",
+      "Copia estructurada",
+      "SEO básico"
+    ],
+    "revisions": "+ Hasta 2 revisiones incluidas"
+  },
+  "whyPossible": {
+    "title": "48 HORAS ES POSIBLE PORQUE",
+    "titleHighlight": "ELIMINAMOS LA FRICCIÓN",
+    "description": "Las agencias tradicionales tardan semanas porque comienzan con procesos manuales para cada proyecto. Este sistema utiliza automatización y flujos de trabajo ágiles para producir productos terminados más rápido.",
+    "videoCtaSubtext": "Mira cómo funciona — y deja que lo construyamos para ti.",
+    "videoCta": "Comenzar Mi Construcción de 48 Horas",
+    "reasons": [
+      {
+        "title": "Cuestionario Guiado",
+        "desc": "Sin reuniones largas de descubrimiento. Tus respuestas definen el alcance al instante."
+      },
+      {
+        "title": "Copia Asistida por IA",
+        "desc": "Usamos IA para redactar copia de alta conversión basada en tu industria empresarial."
+      },
+      {
+        "title": "Patrones de Diseño",
+        "desc": "Diseños neobrutales probados y modernos que funcionan de inmediato."
+      },
+      {
+        "title": "Flujo de Trabajo Ágil",
+        "desc": "Sin transferencias manuales. Nuestros sistemas internos están construidos para pura velocidad."
+      }
+    ]
+  },
+  "funnelSection": {
+    "title": "Comienza Tu",
+    "titleHighlight": "Construcción de",
+    "titleEnd": "48 Horas",
+    "subtitle": "Respuestas Guiadas. Entrega Más Rápida. Mejores Resultados.",
+    "mainText": "Responde 5 preguntas rápidas y obtén tu plan personalizado.",
+    "subText": "Toma menos de 2 minutos. Obtén una recomendación al instante.",
+    "cta": "Ver Mi Precio Ahora"
+  },
+  "comparison": {
+    "title": "La",
+    "oldWay": "Forma Antigua",
+    "fastWay": "Forma Rápida",
+    "rows": [
+      {
+        "traditional": "Reuniones largas de descubrimiento",
+        "studio": "Cuestionario guiado"
+      },
+      {
+        "traditional": "El cliente debe escribir todo",
+        "studio": "Copia asistida por IA"
+      },
+      {
+        "traditional": "Proceso manual de propuestas",
+        "studio": "Recomendación de plan automática"
+      },
+      {
+        "traditional": "Semanas o meses de espera",
+        "studio": "Menos de 48 horas"
+      },
+      {
+        "traditional": "Lenguaje técnico confuso",
+        "studio": "Opciones simples"
+      },
+      {
+        "traditional": "Precios altos de agencia",
+        "studio": "Precios transparentes y asequibles"
+      },
+      {
+        "traditional": "Maqueta o MVP primero",
+        "studio": "Producto terminado"
+      }
+    ],
+    "traditionalHeader": "Agencia Tradicional",
+    "studioHeader": "Embudo de 48 Horas"
+  },
+  "pricing": {
+    "title": "Precios",
+    "titleHighlight": "Disruptivos",
+    "description": "Aproximadamente 1/2 del costo de las agencias tradicionales.",
+    "descriptionEnd": "Rápido, transparente y construido para escalar.",
+    "disclaimer": "Sin cargos ocultos. Sin sorpresas. Solo resultados.",
+    "cta": "VER MI PRECIO AHORA",
+    "plans": {
+      "starter": {
+        "name": "Landing Inicial",
+        "price": "$650",
+        "bestFor": "Profesionales y Pequeños Negocios",
+        "features": [
+          "Página de destino terminada",
+          "Hasta 6 secciones",
+          "Responsive móvil",
+          "Formulario de contacto",
+          "Copia asistida por IA",
+          "2 Revisiones incluidas"
+        ]
+      },
+      "store": {
+        "name": "Tienda en Línea",
+        "price": "$1,850",
+        "bestFor": "Vender productos en línea",
+        "features": [
+          "Sitio multipágina básico",
+          "Hasta 10 productos iniciales",
+          "Integración de pagos",
+          "Carrito y Checkout",
+          "SEO básico",
+          "2 Revisiones incluidas"
+        ]
+      },
+      "platform": {
+        "name": "Plataforma Lite",
+        "price": "$3,950+",
+        "bestFor": "Herramientas comerciales personalizadas",
+        "features": [
+          "Sitio web multipágina",
+          "Aplicación web personalizada / Panel de control",
+          "Sistema de captura de leads",
+          "Automatizaciones avanzadas",
+          "Integración de base de datos",
+          "Soporte de entrega por fases"
+        ]
+      }
+    }
+  },
+  "team": {
+    "label": "Nuestro Equipo",
+    "title": "Los Especialistas Detrás de",
+    "titleHighlight": "48 Hours Studio",
+    "description": "Un equipo multidisciplinario con experiencia académica, tecnológica y estratégica en el sector digital.",
+    "members": [
+      {
+        "name": "Dr. Victor Garcia M.",
+        "role": "CEO",
+        "description": "Lone Star College Faculty · AI Task Force",
+        "image": "/VHGM  foto.jpg",
+        "color": "bg-brutal-cyan"
+      },
+      {
+        "name": "Ing. Hugo Garcia P.",
+        "role": "OFFICIAL DE INNOVACIÓN",
+        "description": "Especialista en IA y Automatización",
+        "image": "/Foto profesional Hugo Gerardo.png",
+        "color": "bg-brutal-yellow"
+      },
+      {
+        "name": "Mayela Garcia P.",
+        "role": "EXPERTO EN REDES SOCIALES",
+        "description": "Estrategia Digital y Contenido Educativo",
+        "image": "/Foto profesional Mayela.png",
+        "color": "bg-brutal-pink"
+      },
+      {
+        "name": "Victor Garcia R.",
+        "role": "NARRACIÓN Y SEO",
+        "description": "Experto en Contenido y Posicionamiento Digital",
+        "image": "/foto Victor Andres.png",
+        "color": "bg-brutal-violet"
+      }
+    ]
+  },
+  "faq": {
+    "title": "¿Tienes",
+    "titleHighlight": "Preguntas?",
+    "items": [
+      {
+        "question": "¿Cómo es posible 48 horas?",
+        "answer": "Hemos eliminado todos los cuellos de botella de la agencia tradicional. Sin reuniones largas, sin propuestas personalizadas para cada proyecto, y un cuestionario guiado que recopila todo lo que necesitamos en minutos. Utilizamos patrones de desarrollo lean y flujos de trabajo asistidos por IA para construir tu producto terminado rápidamente."
+      },
+      {
+        "question": "¿Es un mockup o un sitio terminado?",
+        "answer": "Es un producto 100% terminado, funcional y responsive. No entregamos MVPs ni mockups. Obtienes un sitio web, tienda o aplicación en vivo lista para tus clientes."
+      },
+      {
+        "question": "¿Qué pasa si no tengo mi contenido listo?",
+        "answer": "Nuestro cuestionario hace preguntas específicas sobre los objetivos de tu negocio e industria. Luego usamos esa información para generar una copia de alta calidad asistida por IA como base. Puedes revisar y sugerir hasta 2 revisiones."
+      },
+      {
+        "question": "¿Puedo agregar características personalizadas después?",
+        "answer": "Sí. Todos nuestros productos están construidos pensando en la escalabilidad. Puedes comenzar con una solución de 48 horas y agregar características complejas, integraciones o más páginas mientras tu negocio crece."
+      }
+    ],
+    "followupTitle": "¿Más preguntas?",
+    "followupDesc": "Estamos aquí para ayudarte a resolver tus problemas digitales rápidamente.",
+    "followupCta": "LLENAR EL FORMULARIO DE CONTACTO"
+  },
+  "finalCta": {
+    "title": "¿Listo para",
+    "titleHighlight": "Dejar de Esperar?",
+    "description": "Obtén tu sitio web, tienda o aplicación terminada en menos de 48 horas.",
+    "cta": "CONSTRUIR MI SOLUCIÓN DE 48 HORAS"
+  },
+  "footer": {
+    "logo": "48H STUDIO",
+    "tagline": "Terminado significa terminado.",
+    "privacy": "Política de Privacidad",
+    "terms": "Términos de Servicio",
+    "contact": "Contáctanos",
+    "copyright": "© 2026 48H STUDIO. Construido con velocidad."
+  },
+  "contact": {
+    "title": "¿ALGUNA OTRA PREGUNTA?",
+    "subtitle": "Envíanos un mensaje y te responderemos rápidamente.",
+    "nameLabel": "Tu Nombre",
+    "namePlaceholder": "ej. Alex Rivera",
+    "emailLabel": "Email de Trabajo",
+    "emailPlaceholder": "alex@negocio.com",
+    "businessLabel": "Nombre del Negocio",
+    "businessPlaceholder": "ej. Estudio de Diseño Rivera",
+    "messageLabel": "Tu Mensaje",
+    "messagePlaceholder": "¿Cómo podemos ayudarte a resolver tu problema?",
+    "submit": "ENVIAR MENSAJE",
+    "submitting": "ENVIANDO...",
+    "successTitle": "¡Mensaje Recibido!",
+    "successMessage": "Te responderemos en menos de 24 horas.",
+    "sendAnother": "Enviar Otro",
+    "error": "Algo salió mal. Por favor, intenta de nuevo."
+  }
+}

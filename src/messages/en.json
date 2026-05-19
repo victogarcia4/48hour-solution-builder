@@ -1,0 +1,275 @@
+{
+  "navbar": {
+    "logo": "48H STUDIO",
+    "howItWorks": "How it works",
+    "team": "Our Team",
+    "pricing": "Pricing",
+    "faq": "FAQ",
+    "cta": "Boost Your Business Now"
+  },
+  "hero": {
+    "badge": "Disrupting the Agency Model",
+    "title": "Let's Build Your",
+    "titleHighlight": "Solution",
+    "titleEnd": "In Less Than 48 Hours",
+    "description": "Answer a guided funnel, choose your style and features, and get a professional website, online store, or custom web app built at a fraction of agency pricing.",
+    "ctaPrimary": "Build My 48-Hour Solution",
+    "ctaSecondary": "See Pricing",
+    "benefit1": "No long meetings",
+    "benefit2": "No complicated forms",
+    "benefit3": "No waiting weeks"
+  },
+  "problem": {
+    "title": "You Don't Need Another Agency Process.",
+    "titleHighlight": "You Need Your Website Live.",
+    "description": "Traditional web projects take too long, cost too much, and ask the client to explain too many technical details. Small businesses need a simpler path.",
+    "painPoints": [
+      "Long discovery calls",
+      "Confusing proposals",
+      "High agency prices",
+      "Slow delivery timelines",
+      "Too many technical questions",
+      "Clients forced to write all content themselves",
+      "MVPs or mockups instead of finished products"
+    ],
+    "agencyRealityTitle": "The Agency Reality",
+    "slowTitle": "Weeks of back-and-forth",
+    "slowDesc": "Time is money. You're losing both.",
+    "overheadTitle": "Hidden Overheads",
+    "overheadDesc": "You're paying for their fancy office, not your code.",
+    "jargonTitle": "Technical Jargon",
+    "jargonDesc": "They talk in clouds. We talk in conversions."
+  },
+  "promise": {
+    "title": "Finished, Functional, and Ready to Launch",
+    "quote": "We do not deliver an incomplete MVP, a static mockup, or a half-built page.",
+    "sectionTitle": "Finished Means Finished",
+    "description": "After you approve the plan and submit assets, the build begins. The result is a finished product ready to represent your business, capture leads, or sell services.",
+    "disclaimer": "Delivery in less than 48 hours applies to projects within the approved scope. We prioritize speed without sacrificing quality.",
+    "inclusionsTitle": "What's Included:",
+    "inclusions": [
+      "Final visual design applied",
+      "Working navigation",
+      "Responsive layout",
+      "Functional contact form",
+      "Connected CTA buttons",
+      "Mobile optimization",
+      "Structured copy",
+      "Basic SEO"
+    ],
+    "revisions": "+ Up to 2 revisions included"
+  },
+  "whyPossible": {
+    "title": "48 HOURS IS POSSIBLE BECAUSE WE",
+    "titleHighlight": "REMOVED THE FRICTION",
+    "description": "Traditional agencies take weeks because they start with manual processes for every project. This system uses automation and lean workflows to produce finished products faster.",
+    "videoCtaSubtext": "Watch how it works — then let us build yours.",
+    "videoCta": "Start My 48-Hour Build Now",
+    "reasons": [
+      {
+        "title": "Guided Funnel",
+        "desc": "No long discovery meetings. Your answers define the scope instantly."
+      },
+      {
+        "title": "AI-Assisted Copy",
+        "desc": "We use AI to draft high-conversion copy based on your business industry."
+      },
+      {
+        "title": "Design Patterns",
+        "desc": "Proven neobrutalist and modern layouts that work out of the box."
+      },
+      {
+        "title": "Lean Dev Workflow",
+        "desc": "No manual handoffs. Our internal systems are built for pure speed."
+      }
+    ]
+  },
+  "funnelSection": {
+    "title": "Start Your",
+    "titleHighlight": "48-Hour",
+    "titleEnd": "Build",
+    "subtitle": "Guided Answers. Faster Delivery. Better Results.",
+    "mainText": "Answer 5 quick questions and get your personalized plan.",
+    "subText": "Takes less than 2 minutes. Get a recommendation instantly.",
+    "cta": "See My Price Now"
+  },
+  "comparison": {
+    "title": "The",
+    "oldWay": "Old Way",
+    "fastWay": "Fast Way",
+    "rows": [
+      {
+        "traditional": "Long discovery meetings",
+        "studio": "Guided funnel"
+      },
+      {
+        "traditional": "Client must write everything",
+        "studio": "AI-assisted copy"
+      },
+      {
+        "traditional": "Manual proposal process",
+        "studio": "Automatic plan recommendation"
+      },
+      {
+        "traditional": "Weeks or months of waiting",
+        "studio": "Less than 48 hours"
+      },
+      {
+        "traditional": "Confusing technical language",
+        "studio": "Simple choices"
+      },
+      {
+        "traditional": "High agency pricing",
+        "studio": "Affordable transparent pricing"
+      },
+      {
+        "traditional": "Mockup or MVP first",
+        "studio": "Finished product"
+      }
+    ],
+    "traditionalHeader": "Traditional Agency",
+    "studioHeader": "48-Hour Funnel"
+  },
+  "pricing": {
+    "title": "Disruptive",
+    "titleHighlight": "Pricing",
+    "description": "Approximately 1/2 the cost of traditional agencies.",
+    "descriptionEnd": "Fast, transparent, and built to scale.",
+    "disclaimer": "No hidden fees. No surprises. Just results.",
+    "cta": "SEE MY PRICE NOW",
+    "plans": {
+      "starter": {
+        "name": "Starter Landing",
+        "price": "$650",
+        "bestFor": "Professionals & Small Biz",
+        "features": [
+          "Finished landing page",
+          "Up to 6 sections",
+          "Mobile responsive",
+          "Contact form",
+          "AI-assisted copy",
+          "2 Revisions included"
+        ]
+      },
+      "store": {
+        "name": "Online Store",
+        "price": "$1,850",
+        "bestFor": "Selling products online",
+        "features": [
+          "Basic multipage site",
+          "Up to 10 initial products",
+          "Payment integration",
+          "Cart & Checkout",
+          "Basic SEO",
+          "2 Revisions included"
+        ]
+      },
+      "platform": {
+        "name": "Platform Lite",
+        "price": "$3,950+",
+        "bestFor": "Custom business tools",
+        "features": [
+          "Multipage website",
+          "Custom web app / Dashboard",
+          "Lead capture system",
+          "Advanced automations",
+          "Database integration",
+          "Phased delivery support"
+        ]
+      }
+    }
+  },
+  "team": {
+    "label": "Our Team",
+    "title": "The Specialists Behind",
+    "titleHighlight": "48 Hours Studio",
+    "description": "A multidisciplinary team with academic, technological, and strategic expertise in the digital sector.",
+    "members": [
+      {
+        "name": "Dr. Victor Garcia M.",
+        "role": "CEO",
+        "description": "Lone Star College Faculty · AI Task Force",
+        "image": "/VHGM  foto.jpg",
+        "color": "bg-brutal-cyan"
+      },
+      {
+        "name": "Ing. Hugo Garcia P.",
+        "role": "INNOVATION OFFICER",
+        "description": "AI & Automation Specialist",
+        "image": "/Foto profesional Hugo Gerardo.png",
+        "color": "bg-brutal-yellow"
+      },
+      {
+        "name": "Mayela Garcia P.",
+        "role": "SOCIAL MEDIA EXPERT",
+        "description": "Digital Strategy & Educational Content",
+        "image": "/Foto profesional Mayela.png",
+        "color": "bg-brutal-pink"
+      },
+      {
+        "name": "Victor Garcia R.",
+        "role": "STORYTELLING & SEO",
+        "description": "Content & Digital Positioning Expert",
+        "image": "/foto Victor Andres.png",
+        "color": "bg-brutal-violet"
+      }
+    ]
+  },
+  "faq": {
+    "title": "Got",
+    "titleHighlight": "Questions?",
+    "items": [
+      {
+        "question": "How is 48 hours possible?",
+        "answer": "We've removed all the traditional agency bottlenecks. No long meetings, no custom proposals for every project, and a guided funnel that collects everything we need in minutes. We use lean development patterns and AI-assisted workflows to build your finished product fast."
+      },
+      {
+        "question": "Is it a mockup or a finished site?",
+        "answer": "It's a 100% finished, functional, and responsive product. We don't deliver MVPs or mockups. You get a live website, store, or app ready for your customers."
+      },
+      {
+        "question": "What if I don't have my content ready?",
+        "answer": "Our funnel asks specific questions about your business goals and industry. We then use that information to generate high-quality AI-assisted copy as a base. You can review and suggest up to 2 revisions."
+      },
+      {
+        "question": "Can I add custom features later?",
+        "answer": "Yes. All our products are built with scalability in mind. You can start with a 48-hour solution and add complex features, integrations, or more pages as your business grows."
+      }
+    ],
+    "followupTitle": "Any other questions?",
+    "followupDesc": "We're here to help you solve your digital problems fast.",
+    "followupCta": "FILL THE CONTACT FORM"
+  },
+  "finalCta": {
+    "title": "Ready to",
+    "titleHighlight": "Stop Waiting?",
+    "description": "Get your finished website, store, or app in less than 48 hours.",
+    "cta": "BUILD MY 48-HOUR SOLUTION"
+  },
+  "footer": {
+    "logo": "48H STUDIO",
+    "tagline": "Finished means finished.",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service",
+    "contact": "Contact Us",
+    "copyright": "© 2026 48H STUDIO. Built with speed."
+  },
+  "contact": {
+    "title": "ANY OTHER QUESTIONS?",
+    "subtitle": "Drop us a message and we'll get back to you fast.",
+    "nameLabel": "Your Name",
+    "namePlaceholder": "e.g. Alex Rivera",
+    "emailLabel": "Work Email",
+    "emailPlaceholder": "alex@business.com",
+    "businessLabel": "Business Name",
+    "businessPlaceholder": "e.g. Rivera Design Studio",
+    "messageLabel": "Your Message",
+    "messagePlaceholder": "How can we help you solve your problem?",
+    "submit": "SEND MESSAGE",
+    "submitting": "SENDING...",
+    "successTitle": "Message Received!",
+    "successMessage": "We'll get back to you in less than 24 hours.",
+    "sendAnother": "Send Another",
+    "error": "Something went wrong. Please try again."
+  }
+}
