@@ -252,6 +252,7 @@
     "privacy": "Política de Privacidad",
     "terms": "Términos de Servicio",
     "contact": "Contáctanos",
+    "email": "info@48hours.live",
     "copyright": "© 2026 48H STUDIO. Construido con velocidad."
   },
   "contact": {
@@ -268,7 +269,7 @@
     "submit": "ENVIAR MENSAJE",
     "submitting": "ENVIANDO...",
     "successTitle": "¡Mensaje Recibido!",
-    "successMessage": "Te responderemos en menos de 24 horas.",
+    "successMessage": "Te responderemos en menos de 24 horas. Revisa tu bandeja de entrada para ver la confirmación.",
     "sendAnother": "Enviar Otro",
     "error": "Algo salió mal. Por favor, intenta de nuevo."
   }

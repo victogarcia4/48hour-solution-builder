@@ -2,6 +2,11 @@
 
 import { createClient } from './server';
 import type { FunnelState, SelectedAddon } from '@/features/funnel/types';
+import { sendEmail } from '@/features/email/services/email-service';
+import { NOTIFY_EMAIL, SITE_URL } from '@/shared/lib/resend';
+import { contactAutoReplyHtml } from '@/features/email/templates/contactAutoReply';
+import { contactNotificationHtml } from '@/features/email/templates/contactNotification';
+import { funnelLeadNotificationHtml } from '@/features/email/templates/funnelLeadNotification';
 
 export interface SaveFunnelResult {
   leadId: string;
@@ -120,6 +125,29 @@ export async function saveFunnelWithAddOnsAction(
       }
     }
 
+    // Fire lead notification email — failure never blocks the response
+    try {
+      const submittedAt = new Date().toLocaleString('en-US', { timeZone: 'America/Chicago' });
+      await sendEmail({
+        to: NOTIFY_EMAIL,
+        subject: `${state.requiresManualReview ? '⚠ MANUAL REVIEW — ' : ''}New funnel lead: ${state.contact.name}`,
+        html: funnelLeadNotificationHtml({
+          name: state.contact.name,
+          email: state.contact.email,
+          businessName: state.contact.businessName,
+          recommendedPlan: state.recommendedPlan || 'TBD',
+          projectType: state.projectType || state.q1_projectType || 'unknown',
+          budget: state.fq1_budget || undefined,
+          requiresManualReview: state.requiresManualReview ?? false,
+          manualReviewFlags: state.manualReviewFlags || [],
+          estimatedTotal: (state.recommendedPrice || 0) + (state.estimatedAddOnPrice || 0),
+          submittedAt,
+        }),
+      });
+    } catch (emailErr) {
+      console.error('[saveFunnelWithAddOnsAction] Email send failed:', emailErr);
+    }
+
     return {
       success: true,
       leadId: lead.id,
@@ -173,6 +201,34 @@ export async function saveContactMessageAction(
         hint: error.hint,
       }));
       return { success: false, error: error.message || 'Database error' };
+    }
+
+    // Fire emails in parallel — failure never blocks the response
+    try {
+      const submittedAt = new Date().toLocaleString('en-US', { timeZone: 'America/Chicago' });
+      await Promise.all([
+        sendEmail({
+          to: input.email,
+          subject: 'We got your message — 48H Studio',
+          html: contactAutoReplyHtml({
+            userName: input.name.split(' ')[0],
+            siteUrl: SITE_URL,
+          }),
+        }),
+        sendEmail({
+          to: NOTIFY_EMAIL,
+          subject: `New contact: ${input.name}`,
+          html: contactNotificationHtml({
+            name: input.name,
+            email: input.email,
+            businessName: input.businessName,
+            message: input.message,
+            submittedAt,
+          }),
+        }),
+      ]);
+    } catch (emailErr) {
+      console.error('[saveContactMessageAction] Email send failed:', emailErr);
     }
 
     return { success: true };

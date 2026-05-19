@@ -100,10 +100,11 @@ export default function Home() {
             <span className="font-black text-3xl tracking-tighter uppercase">{t('footer.logo')}</span>
             <p className="text-sm font-bold opacity-60 uppercase tracking-widest">{t('footer.tagline')}</p>
           </div>
-          <div className="flex gap-12 font-black uppercase text-sm">
+          <div className="flex flex-wrap gap-8 font-black uppercase text-sm">
             <a href="#" className="hover:text-brutal-pink transition-colors">{t('footer.privacy')}</a>
             <a href="#" className="hover:text-brutal-pink transition-colors">{t('footer.terms')}</a>
-            <a href="#" className="hover:text-brutal-pink transition-colors">{t('footer.contact')}</a>
+            <a href="#contact" className="hover:text-brutal-pink transition-colors">{t('footer.contact')}</a>
+            <a href="mailto:info@48hours.live" className="hover:text-brutal-pink transition-colors normal-case">{t('footer.email')}</a>
           </div>
           <div className="font-bold text-xs uppercase tracking-tighter">
             {t('footer.copyright')}
