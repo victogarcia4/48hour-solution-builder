@@ -64,3 +64,6 @@ Thumbs.db
 # Supabase
 supabase/.branches
 supabase/.temp
+
+# TypeScript build cache
+tsconfig.tsbuildinfo
