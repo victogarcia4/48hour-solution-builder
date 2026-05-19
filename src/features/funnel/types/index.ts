@@ -1,6 +1,6 @@
-export type ProjectType = 'landing' | 'website' | 'ecommerce' | 'website_ecommerce' | 'webapp' | 'not_sure' | 'other';
-export type PlanType = 'plan1' | 'plan2' | 'plan3' | 'manual_review';
-export type WizardBranch = 'landing' | 'ecommerce' | 'webapp';
+export type ProjectType = 'landing' | 'website' | 'ecommerce' | 'website_ecommerce' | 'mini_app' | 'webapp' | 'not_sure' | 'other';
+export type PlanType = 'plan1' | 'plan2' | 'plan3' | 'plan4' | 'manual_review';
+export type WizardBranch = 'landing' | 'ecommerce' | 'mini_app' | 'webapp';
 
 export interface ContactInfo {
   name: string;
@@ -54,6 +54,14 @@ export type FunnelState = {
   ec16_inventory?: boolean;
   ec17_automatedEmails?: string[];
   ec18_language?: string;
+
+  // Mini App Branch (Q11-Q16) - Conditional
+  ma11_appType?: string;
+  ma12_users?: string[];
+  ma13_features?: string[];
+  ma14_requiresLogin?: boolean;
+  ma15_integrations?: string[];
+  ma16_urgency?: string;
 
   // Web App Branch (Q11-Q19) - Conditional
   wa11_appType?: string;

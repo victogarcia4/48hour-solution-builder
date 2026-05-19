@@ -28,8 +28,17 @@ export function getPlanRecommendation(state: Partial<FunnelState>): Recommendati
   if (projectType === 'webapp') {
     return {
       plan: 'plan3',
-      price: 3950,
+      price: 2000,
       message: 'Business Platform Lite — Perfect for your custom app needs.',
+      flags: [],
+    };
+  }
+
+  if (projectType === 'mini_app') {
+    return {
+      plan: 'plan4',
+      price: 2000,
+      message: 'Web or Mobile Mini App — A focused custom app built fast.',
       flags: [],
     };
   }
@@ -37,7 +46,7 @@ export function getPlanRecommendation(state: Partial<FunnelState>): Recommendati
   if (projectType === 'ecommerce' || projectType === 'website_ecommerce') {
     return {
       plan: 'plan2',
-      price: 1850,
+      price: 1000,
       message: 'Online Store Launch — Everything you need to sell online.',
       flags: [],
     };
@@ -46,7 +55,7 @@ export function getPlanRecommendation(state: Partial<FunnelState>): Recommendati
   // Default to Plan 1 for landing/website/not_sure/other
   return {
     plan: 'plan1',
-    price: 650,
+    price: 500,
     message: 'Starter Landing — Your online presence in 48 hours.',
     flags: [],
   };
@@ -142,14 +151,18 @@ export function getPlanPrice(state: Partial<FunnelState>): number {
   const projectType = state.projectType || state.q1_projectType;
 
   if (projectType === 'webapp') {
-    return 3950;
+    return 2000;
+  }
+
+  if (projectType === 'mini_app') {
+    return 2000;
   }
 
   if (projectType === 'ecommerce' || projectType === 'website_ecommerce') {
-    return 1850;
+    return 1000;
   }
 
-  return 650; // Plan 1 default
+  return 500; // Plan 1 default
 }
 
 // ==================== ADD-ON SUGGESTIONS ====================
@@ -288,6 +301,10 @@ export function getVisibleSteps(state: Partial<FunnelState>): string[] {
     steps.push(
       'ec11_ec18_ecommerceSpecifics'
     );
+  } else if (projectType === 'mini_app') {
+    steps.push(
+      'ma11_ma16_miniAppSpecifics'
+    );
   } else if (projectType === 'webapp') {
     steps.push(
       'wa11_wa19_webAppSpecifics'
@@ -317,9 +334,12 @@ export function getVisibleSteps(state: Partial<FunnelState>): string[] {
 
 // ==================== BRANCH DETERMINATION ====================
 
-export function determineBranch(projectType: string | undefined): 'landing' | 'ecommerce' | 'webapp' | null {
+export function determineBranch(projectType: string | undefined): 'landing' | 'ecommerce' | 'mini_app' | 'webapp' | null {
   if (projectType === 'webapp') {
     return 'webapp';
+  }
+  if (projectType === 'mini_app') {
+    return 'mini_app';
   }
   if (projectType === 'ecommerce' || projectType === 'website_ecommerce') {
     return 'ecommerce';

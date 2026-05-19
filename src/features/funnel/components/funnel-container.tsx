@@ -22,6 +22,7 @@ import { StepContentAssets } from './steps/StepContentAssets';
 import { StepDomainTimeline } from './steps/StepDomainTimeline';
 import { StepLandingSpecifics } from './steps/StepLandingSpecifics';
 import { StepEcommerceSpecifics } from './steps/StepEcommerceSpecifics';
+import { StepMiniAppSpecifics } from './steps/StepMiniAppSpecifics';
 import { StepWebAppSpecifics } from './steps/StepWebAppSpecifics';
 import { StepContactInfo } from './steps/StepContactInfo';
 import { StepSummary } from './steps/StepSummary';
@@ -224,6 +225,8 @@ export default function FunnelContainer() {
         return <StepLandingSpecifics {...stepProps} />;
       case 'ec11_ec18_ecommerceSpecifics':
         return <StepEcommerceSpecifics {...stepProps} />;
+      case 'ma11_ma16_miniAppSpecifics':
+        return <StepMiniAppSpecifics {...stepProps} />;
       case 'wa11_wa19_webAppSpecifics':
         return <StepWebAppSpecifics {...stepProps} />;
       case 'fq1_budget':

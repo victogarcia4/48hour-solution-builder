@@ -175,6 +175,8 @@ function getPlanName(planType: string | undefined): string {
       return 'Online Store Launch';
     case 'plan3':
       return 'Business Platform Lite';
+    case 'plan4':
+      return 'Web or Mobile Mini App';
     default:
       return 'Custom Plan';
   }

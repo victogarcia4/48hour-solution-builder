@@ -1,6 +1,6 @@
 export const PLAN_DETAILS = {
   'Starter Landing': {
-    price: '$650',
+    price: '$500',
     includes: [
       'Finished landing page',
       'Up to 6 sections',
@@ -14,7 +14,7 @@ export const PLAN_DETAILS = {
     ]
   },
   'Online Store Launch': {
-    price: '$1,850',
+    price: '$1,000',
     includes: [
       'Basic multipage website',
       'Home, About, Services/Products, Store, Contact',
@@ -28,7 +28,7 @@ export const PLAN_DETAILS = {
     ]
   },
   'Business Platform Lite': {
-    price: '$3,950+',
+    price: '$2,000',
     includes: [
       'Multipage website',
       'Landing page section',
@@ -40,6 +40,20 @@ export const PLAN_DETAILS = {
       'Basic payment integration',
       'Simple automation',
       'Mobile responsive design',
+      'Up to 2 suggested changes'
+    ]
+  },
+  'Web or Mobile Mini App': {
+    price: '$2,000',
+    includes: [
+      'Simple custom web or mobile app',
+      'Up to 3 core features',
+      'Basic user authentication',
+      'Single data model',
+      'Mobile responsive design',
+      'Basic dashboard or admin panel',
+      'API or third-party integration (1)',
+      'Simple automation (1 workflow)',
       'Up to 2 suggested changes'
     ]
   }

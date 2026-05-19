@@ -35,6 +35,7 @@ export const PROJECT_TYPES = [
   { id: 'website', label: 'Website for a business or service' },
   { id: 'ecommerce', label: 'Online store / ecommerce' },
   { id: 'website_ecommerce', label: 'Website + ecommerce' },
+  { id: 'mini_app', label: 'Web or mobile mini app' },
   { id: 'webapp', label: 'Website + ecommerce + custom web app' },
   { id: 'not_sure', label: 'I am not sure' },
   { id: 'other', label: 'Other' }
@@ -144,6 +145,46 @@ export const ECOMMERCE_LANGUAGES = [
   { id: 'es', label: 'Spanish only' },
   { id: 'en-es', label: 'Bilingual (EN/ES)' },
   { id: 'other', label: 'Other language' }
+];
+
+// ==================== MINI APP SPECIFICS (Q11-Q16) ====================
+
+export const MINI_APP_TYPES = [
+  'Chat or messaging interface',
+  'Task / project tracker',
+  'Data dashboard',
+  'Internal tool or admin panel',
+  'Lead capture system',
+  'Booking / scheduling app',
+  'Other'
+];
+
+export const MINI_APP_USERS = [
+  'Just me (owner/admin only)',
+  'My team (internal users)',
+  'Clients or customers (external users)',
+  'Mixed (internal + external)'
+];
+
+export const MINI_APP_FEATURES = [
+  'User authentication (login/signup)',
+  'Create / edit / delete records',
+  'File or image upload',
+  'Search and filtering',
+  'Email notifications',
+  'Payment processing',
+  'Export data (CSV / PDF)',
+  'Real-time updates'
+];
+
+export const MINI_APP_INTEGRATIONS = [
+  'Email (Resend / SMTP)',
+  'Stripe / PayPal',
+  'Google Sheets',
+  'Calendly / Scheduling',
+  'Slack',
+  'Zapier / Make',
+  'None needed'
 ];
 
 // ==================== WEB APP SPECIFICS (Q11-Q19) ====================
