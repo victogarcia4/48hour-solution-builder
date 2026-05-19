@@ -7,7 +7,6 @@ import { Team } from "@/shared/components/team";
 import { Pricing } from "@/shared/components/pricing";
 import { FAQ } from "@/shared/components/faq";
 import { Contact } from "@/shared/components/contact";
-import FunnelContainer from "@/features/funnel/components/funnel-container";
 
 export default function Home() {
   return (
@@ -34,7 +33,7 @@ export default function Home() {
       <Problem />
       <Promise />
 
-      {/* Funnel Section */}
+      {/* Funnel CTA Section */}
       <section id="funnel" className="py-24 px-6 bg-brutal-violet border-b-4 border-black">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-16">
@@ -46,7 +45,20 @@ export default function Home() {
             </p>
           </div>
           <div className="brutal-card bg-white p-8 md:p-12 shadow-[16px_16px_0px_0px_rgba(0,0,0,1)]">
-            <FunnelContainer />
+            <div className="text-center space-y-8">
+              <p className="text-2xl font-black uppercase text-black">
+                Answer 5 quick questions and get your personalized plan.
+              </p>
+              <p className="text-lg text-gray-600">
+                Takes less than 2 minutes. Get a recommendation instantly.
+              </p>
+              <a
+                href="/presale"
+                className="brutal-btn bg-brutal-yellow text-black text-2xl px-12 py-6 hover:shadow-none transition-all inline-block font-black uppercase"
+              >
+                See My Price Now
+              </a>
+            </div>
           </div>
         </div>
       </section>
