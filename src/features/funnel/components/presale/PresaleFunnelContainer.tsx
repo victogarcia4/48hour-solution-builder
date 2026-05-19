@@ -16,6 +16,7 @@ import React, { useState } from 'react';
 import { i18n } from '../../constants/presale-i18n';
 import { classify } from '../../types/presale';
 import { ADDON_CATALOG } from '../../constants/questions';
+import { saveContactMessageAction } from '@/lib/supabase/server-actions';
 import type {
   Lang, ProjectType, GoalType, ScaleType, AssetType, UrgencyType, PresaleAnswers,
 } from '../../types/presale';
@@ -361,6 +362,7 @@ function ScheduleStage({ lang, answers, addons, onBack }: {
   const [form, setForm] = useState<ContactForm>(EMPTY_CONTACT);
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [submitError, setSubmitError] = useState('');
 
   const set = (k: keyof ContactForm, v: string) => setForm((f) => ({ ...f, [k]: v }));
   const valid = form.name.trim().length > 1 && form.email.includes('@');
@@ -369,10 +371,35 @@ function ScheduleStage({ lang, answers, addons, onBack }: {
     e.preventDefault();
     if (!valid) return;
     setLoading(true);
-    // TODO: wire to server-action or Calendly embed
-    await new Promise((r) => setTimeout(r, 800));
+    setSubmitError('');
+
+    // Build a summary message from add-ons and answers
+    const addonSummary = addons.length > 0
+      ? `\nAdd-ons: ${addons.map((a) => `${a.name} (+$${a.price})`).join(', ')}`
+      : '';
+    const answerSummary = [
+      answers.projectType ? `Type: ${answers.projectType}` : '',
+      answers.goal        ? `Goal: ${answers.goal}`        : '',
+      answers.scale       ? `Scale: ${answers.scale}`      : '',
+      answers.urgency     ? `Urgency: ${answers.urgency}`  : '',
+    ].filter(Boolean).join(' | ');
+
+    const result = await saveContactMessageAction({
+      name: form.name,
+      email: form.email,
+      phone: form.phone || undefined,
+      businessName: undefined,
+      message: [form.message, answerSummary, addonSummary].filter(Boolean).join('\n\n'),
+      source: 'presale_funnel',
+    });
+
     setLoading(false);
-    setSubmitted(true);
+
+    if (result.success) {
+      setSubmitted(true);
+    } else {
+      setSubmitError(result.error || 'Something went wrong. Please try again.');
+    }
   };
 
   if (submitted) {
@@ -502,6 +529,12 @@ function ScheduleStage({ lang, answers, addons, onBack }: {
             className="brutal-input text-sm resize-none"
           />
         </div>
+
+        {submitError && (
+          <div className="border-4 border-black bg-red-400 p-3 font-black text-sm uppercase tracking-wide">
+            ⚠ {submitError}
+          </div>
+        )}
 
         <div className="flex gap-3 pt-2">
           <button

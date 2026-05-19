@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { createClient } from '@/lib/supabase/client';
+import { saveContactMessageAction } from '@/lib/supabase/server-actions';
 
 export const Contact = () => {
   const [isMounted, setIsMounted] = React.useState(false);
@@ -13,8 +13,7 @@ export const Contact = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
-
-  // const supabase = createClient(); // Moved inside handleSubmit to prevent build-time SSR errors
+  const [error, setError] = useState('');
 
   React.useEffect(() => {
     setIsMounted(true);
@@ -24,24 +23,28 @@ export const Contact = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const supabase = createClient();
     setIsSubmitting(true);
-    
+    setError('');
+
     try {
-      const { error } = await supabase.from('contact_messages').insert({
+      const result = await saveContactMessageAction({
         name: formData.name,
         email: formData.email,
-        business_name: formData.businessName,
-        message: formData.message
+        businessName: formData.businessName,
+        message: formData.message,
+        source: 'contact_form',
       });
-      
-      if (!error) {
-        setSubmitted(true);
-      }
-    } catch (error) {
-      console.error('Error submitting contact form:', error);
-    } finally {
+
       setIsSubmitting(false);
+
+      if (result.success) {
+        setSubmitted(true);
+      } else {
+        setError(result.error || 'Something went wrong. Please try again.');
+      }
+    } catch (err) {
+      setIsSubmitting(false);
+      setError(err instanceof Error ? err.message : 'Something went wrong. Please try again.');
     }
   };
 
@@ -120,7 +123,13 @@ export const Contact = () => {
               ></textarea>
             </div>
 
-            <button 
+            {error && (
+              <div className="border-4 border-red-500 bg-red-50 p-4 font-bold text-red-700 text-sm uppercase tracking-wide">
+                ⚠ {error}
+              </div>
+            )}
+
+            <button
               type="submit"
               disabled={isSubmitting}
               className="brutal-btn bg-black text-white w-full py-6 text-2xl mt-4 disabled:opacity-50"
