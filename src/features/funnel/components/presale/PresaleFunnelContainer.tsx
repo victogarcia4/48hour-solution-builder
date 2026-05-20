@@ -659,10 +659,11 @@ export function PresaleFunnelContainer() {
     // Step 0 — Project type
     if (qStep === 0) {
       const opts: { val: ProjectType; icon: string; key: keyof typeof t }[] = [
-        { val: 'landing', icon: '🖥️', key: 'o0_0' },
-        { val: 'store',   icon: '🛒', key: 'o0_1' },
-        { val: 'app',     icon: '⚙️', key: 'o0_2' },
-        { val: 'unsure',  icon: '❓', key: 'o0_3' },
+        { val: 'landing',  icon: '🖥️', key: 'o0_0' },
+        { val: 'store',    icon: '🛒', key: 'o0_1' },
+        { val: 'mini_app', icon: '📱', key: 'o0_2' },
+        { val: 'app',      icon: '⚙️', key: 'o0_3' },
+        { val: 'unsure',   icon: '❓', key: 'o0_4' },
       ];
       return (
         <article>

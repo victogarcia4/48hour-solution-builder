@@ -9,7 +9,7 @@ export interface PresaleI18n {
   continue: string; back: string; seeRec: string; restart: string; resultTag: string;
   // Step 0 — Project type
   tag0: string; q0: string;
-  o0_0: string; o0_1: string; o0_2: string; o0_3: string;
+  o0_0: string; o0_1: string; o0_2: string; o0_3: string; o0_4: string;
   // Step 1 — Goal
   tag1: string; q1: string;
   o1_0: string; o1_1: string; o1_2: string; o1_3: string; o1_4: string;
@@ -43,8 +43,9 @@ export const i18n: Record<Lang, PresaleI18n> = {
     tag0:'Project type', q0:'What do you need to build?',
     o0_0:'A page to capture leads or showcase my business',
     o0_1:'A store to sell products or services online',
-    o0_2:'A platform, CRM, portal, or management tool',
-    o0_3:"I'm not sure — I need guidance",
+    o0_2:'A web or mobile mini app (simple custom tool)',
+    o0_3:'A platform, CRM, portal, or management tool',
+    o0_4:"I'm not sure — I need guidance",
     tag1:'Main goal', q1:'What is the most important outcome for you?',
     o1_0:'Get more clients / capture leads',
     o1_1:'Sell and collect payments from the website',
@@ -81,13 +82,13 @@ export const i18n: Record<Lang, PresaleI18n> = {
     rDirect_title:'Your project is ready for the funnel',
     rDirect_why:"Your case is clear and fits within the standard scope. Complete the guided funnel now and receive your final plan — with pricing, content, and delivery date — in minutes.",
     rDirect_cta:'Start my project now',
-    tiers: { 1:'Landing Page — $300', 2:'Online Store — $600', 3:'Business Platform — $1,000+', 0:'To be defined' },
+    tiers: { 1:'Landing Page — $500', 2:'Online Store — $1,000', 3:'Business Platform — $2,000', 4:'Mini App — $2,000', 0:'To be defined' },
     customScope:'Custom scope', aiIncluded:'AI copy + images included', delivery48:'Delivery < 48h',
     assetHas:'You have:', assetNone:'No materials ready',
     assetMap: { logo:'logo', copy:'written copy', photos:'photos', domain:'domain' },
     scaleMap: { small:'Small scale', medium:'Medium scale', large:'Large scale', unknown:'Scale undefined' },
     timeMap:  { now:'Immediate delivery', week:'This week', month:'This month', exploring:'Exploring' },
-    typeMap:  { landing:'Landing Page', store:'Online Store', app:'Web App / Platform', unsure:'Type undefined' },
+    typeMap:  { landing:'Landing Page', store:'Online Store', mini_app:'Web / Mobile Mini App', app:'Web App / Platform', unsure:'Type undefined' },
   },
   es: {
     step:'Paso 1 de 5', step1:'Paso 2 de 5', step2:'Paso 3 de 5', step3:'Paso 4 de 5', step4:'Paso 5 de 5',
@@ -95,8 +96,9 @@ export const i18n: Record<Lang, PresaleI18n> = {
     tag0:'Tipo de proyecto', q0:'¿Qué necesitas construir?',
     o0_0:'Una página para capturar contactos o mostrar mi negocio',
     o0_1:'Una tienda para vender productos o servicios online',
-    o0_2:'Una plataforma, CRM, portal o herramienta de gestión',
-    o0_3:'No estoy seguro — necesito orientación',
+    o0_2:'Una mini app web o móvil (herramienta personalizada simple)',
+    o0_3:'Una plataforma, CRM, portal o herramienta de gestión',
+    o0_4:'No estoy seguro — necesito orientación',
     tag1:'Objetivo principal', q1:'¿Cuál es el resultado más importante para ti?',
     o1_0:'Conseguir más clientes / capturar contactos',
     o1_1:'Vender y cobrar desde el sitio web',
@@ -133,12 +135,12 @@ export const i18n: Record<Lang, PresaleI18n> = {
     rDirect_title:'Tu proyecto está listo para el funnel',
     rDirect_why:'Tu caso es claro y entra dentro del alcance estándar. Completa el funnel guiado ahora mismo y recibe tu plan final con precio, contenido y fecha de entrega en minutos.',
     rDirect_cta:'Iniciar mi proyecto ahora',
-    tiers: { 1:'Landing Page — $300', 2:'Online Store — $600', 3:'Business Platform — $1,000+', 0:'Por definir' },
+    tiers: { 1:'Landing Page — $500', 2:'Online Store — $1,000', 3:'Business Platform — $2,000', 4:'Mini App — $2,000', 0:'Por definir' },
     customScope:'Scope personalizado', aiIncluded:'Incluimos copy AI + imágenes', delivery48:'Entrega < 48h',
     assetHas:'Tienes:', assetNone:'Sin materiales listos',
     assetMap: { logo:'logo', copy:'textos', photos:'fotos', domain:'dominio' },
     scaleMap: { small:'Escala pequeña', medium:'Escala media', large:'Escala grande', unknown:'Escala sin definir' },
     timeMap:  { now:'Entrega inmediata', week:'Esta semana', month:'Este mes', exploring:'Explorando' },
-    typeMap:  { landing:'Landing Page', store:'Online Store', app:'Web App / Plataforma', unsure:'Tipo por definir' },
+    typeMap:  { landing:'Landing Page', store:'Online Store', mini_app:'Mini App Web / Móvil', app:'Web App / Plataforma', unsure:'Tipo por definir' },
   },
 };
