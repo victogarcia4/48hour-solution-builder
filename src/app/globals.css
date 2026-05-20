@@ -9,6 +9,15 @@
   }
 }
 
+@keyframes marquee {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+}
+
 @layer components {
   .brutal-card {
     @apply bg-white border-4 border-black shadow-brutal p-6 transition-all duration-100;

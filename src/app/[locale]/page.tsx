@@ -6,6 +6,7 @@ import { Comparison } from "@/shared/components/comparison";
 import { WhyPossible } from "@/shared/components/why-possible";
 import { Team } from "@/shared/components/team";
 import { Pricing } from "@/shared/components/pricing";
+import { Partners } from "@/shared/components/partners";
 import { FAQ } from "@/shared/components/faq";
 import { Contact } from "@/shared/components/contact";
 import { LanguageToggle } from "@/shared/components/language-toggle";
@@ -74,6 +75,7 @@ export default function Home() {
       <Team />
       <Comparison />
       <Pricing />
+      <Partners />
       <FAQ />
       <Contact />
 

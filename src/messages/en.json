@@ -255,6 +255,12 @@
     "email": "info@48hours.live",
     "copyright": "© 2026 48H STUDIO. Built with speed."
   },
+  "partners": {
+    "eyebrow": "Real solutions, real results",
+    "title": "These are our",
+    "titleHighlight": "partners",
+    "subtitle": "Solutions we've built and launched in 48 hours or less."
+  },
   "contact": {
     "title": "ANY OTHER QUESTIONS?",
     "subtitle": "Drop us a message and we'll get back to you fast.",
