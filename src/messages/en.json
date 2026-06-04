@@ -176,6 +176,19 @@
           "Database integration",
           "Phased delivery support"
         ]
+      },
+      "consultoria": {
+        "name": "ConsultorIA",
+        "price": "$850",
+        "bestFor": "AI & Process Strategic Audit",
+        "features": [
+          "Deep 4-pillar audit",
+          "Critical dependencies analysis",
+          "Tools & architecture proposal",
+          "AI optimization roadmap",
+          "Delivered in less than 48 hours",
+          "Strategic onboarding session"
+        ]
       }
     }
   },

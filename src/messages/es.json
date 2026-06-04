@@ -176,6 +176,19 @@
           "Integración de base de datos",
           "Soporte de entrega por fases"
         ]
+      },
+      "consultoria": {
+        "name": "ConsultorIA",
+        "price": "$850",
+        "bestFor": "Auditoría Estratégica de Procesos e IA",
+        "features": [
+          "Auditoría profunda de 4 pilares",
+          "Análisis de dependencias críticas",
+          "Propuesta de arquitectura y herramientas",
+          "Roadmap de optimización de IA",
+          "Entregado en menos de 48 horas",
+          "Sesión de onboarding estratégica"
+        ]
       }
     }
   },

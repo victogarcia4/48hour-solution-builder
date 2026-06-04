@@ -1,0 +1,176 @@
+{
+  "phases": {
+    "phase_a": {
+      "name": "Initial Onboarding",
+      "description": "General business parameters and critical operational dependencies.",
+      "questions": [
+        {
+          "id": "company_name",
+          "category": "General",
+          "label_es": "¿Cuál es el nombre de tu empresa?",
+          "label_en": "What is your company name?",
+          "type": "text",
+          "required": true,
+          "impact_score": 0
+        },
+        {
+          "id": "critical_dependency",
+          "category": "General",
+          "label_es": "¿Quién es la persona o personas que tienen todo el conocimiento crítico de la operación? ('los que saben todo')",
+          "label_en": "Who is the key person or people holding all critical operational knowledge? ('those who know everything')",
+          "type": "text",
+          "required": true,
+          "impact_score": 5
+        },
+        {
+          "id": "current_goal",
+          "category": "General",
+          "label_es": "¿Cuál es tu principal objetivo de negocio para los próximos 3 meses?",
+          "label_en": "What is your primary business goal for the next 3 months?",
+          "type": "select",
+          "options": [
+            { "value": "reduce_costs", "label_es": "Reducir costos operativos", "label_en": "Reduce operational costs" },
+            { "value": "increase_sales", "label_es": "Incrementar ventas / captar leads", "label_en": "Increase sales / capture leads" },
+            { "value": "improve_delivery", "label_es": "Mejorar tiempos de entrega / calidad del servicio", "label_en": "Improve delivery times / service quality" },
+            { "value": "automate_admin", "label_es": "Automatizar tareas administrativas repetitivas", "label_en": "Automate repetitive administrative tasks" }
+          ],
+          "required": true,
+          "impact_score": 4
+        }
+      ]
+    },
+    "phase_b": {
+      "name": "Deep-Dive AuditorIA",
+      "description": "Deep audit across the 4 key business pillars.",
+      "modules": {
+        "marketing": {
+          "name": "Marketing",
+          "questions": [
+            {
+              "id": "lead_generation",
+              "label_es": "¿Cómo generas prospectos (leads) actualmente?",
+              "label_en": "How do you currently generate leads?",
+              "type": "multiselect",
+              "options": [
+                { "value": "referrals", "label_es": "Recomendaciones / Boca a boca", "label_en": "Referrals / Word of mouth" },
+                { "value": "paid_ads", "label_es": "Publicidad pagada (Meta, Google, etc.)", "label_en": "Paid Ads (Meta, Google, etc.)" },
+                { "value": "organic_social", "label_es": "Redes sociales orgánicas", "label_en": "Organic social media" },
+                { "value": "cold_outreach", "label_es": "Prospección en frío (Email, LinkedIn)", "label_en": "Cold outreach (Email, LinkedIn)" }
+              ],
+              "required": true,
+              "impact_score": 3
+            },
+            {
+              "id": "marketing_automation",
+              "label_es": "¿Utilizas herramientas para enviar correos automáticos o segmentar clientes?",
+              "label_en": "Do you use tools to send automated emails or segment clients?",
+              "type": "select",
+              "options": [
+                { "value": "none", "label_es": "No, todo es manual", "label_en": "No, everything is manual" },
+                { "value": "basic", "label_es": "Básico (envíos masivos sin segmentar)", "label_en": "Basic (mass emails without segmenting)" },
+                { "value": "advanced", "label_es": "Avanzado (flujos basados en comportamiento)", "label_en": "Advanced (behavior-based workflows)" }
+              ],
+              "required": true,
+              "impact_score": 4
+            }
+          ]
+        },
+        "sales": {
+          "name": "Sales",
+          "questions": [
+            {
+              "id": "sales_bottleneck",
+              "label_es": "¿Cuál es el mayor cuello de botella en tu proceso de ventas?",
+              "label_en": "What is the biggest bottleneck in your sales process?",
+              "type": "select",
+              "options": [
+                { "value": "slow_followup", "label_es": "Velocidad de respuesta a nuevos prospectos", "label_en": "Response speed to new prospects" },
+                { "value": "qualification", "label_es": "Calificación e identificación de clientes ideales", "label_en": "Qualification and identifying ideal clients" },
+                { "value": "proposal_creation", "label_es": "Creación y redacción de propuestas personalizadas", "label_en": "Creating and writing personalized proposals" },
+                { "value": "meeting_booking", "label_es": "Agendar y coordinar reuniones de ventas", "label_en": "Booking and coordinating sales meetings" }
+              ],
+              "required": true,
+              "impact_score": 5
+            },
+            {
+              "id": "crm_adoption",
+              "label_es": "¿Cómo registras el seguimiento de tus ventas actuales?",
+              "label_en": "How do you track your current sales follow-ups?",
+              "type": "select",
+              "options": [
+                { "value": "memory", "label_es": "Memoria / Libreta / Chats", "label_en": "Memory / Notebook / Chats" },
+                { "value": "spreadsheet", "label_es": "Excel / Google Sheets", "label_en": "Excel / Google Sheets" },
+                { "value": "crm", "label_es": "CRM estructurado (Hubspot, Salesforce, Pipedrive)", "label_en": "Structured CRM (Hubspot, Salesforce, Pipedrive)" }
+              ],
+              "required": true,
+              "impact_score": 4
+            }
+          ]
+        },
+        "delivery": {
+          "name": "Delivery",
+          "questions": [
+            {
+              "id": "delivery_manual_ratio",
+              "label_es": "¿Qué porcentaje del trabajo de entrega del servicio / producto es manual o repetitivo?",
+              "label_en": "What percentage of service/product delivery is manual or repetitive?",
+              "type": "scale",
+              "min": 1,
+              "max": 5,
+              "labels": {
+                "1": { "es": "Casi todo automático", "en": "Almost fully automated" },
+                "5": { "es": "100% manual e individual", "en": "100% manual and bespoke" }
+              },
+              "required": true,
+              "impact_score": 5
+            },
+            {
+              "id": "delivery_documentation",
+              "label_es": "¿Tienes documentados los pasos para entregar tu servicio a un cliente nuevo?",
+              "label_en": "Do you have documented steps for delivering your service to a new client?",
+              "type": "select",
+              "options": [
+                { "value": "none", "label_es": "No, todo está en la cabeza del equipo", "label_en": "No, it's all in the team's head" },
+                { "value": "partial", "label_es": "Algunos documentos dispersos", "label_en": "Some scattered documents" },
+                { "value": "complete", "label_es": "Procesos claros y manuales estructurados", "label_en": "Clear processes and structured manuals" }
+              ],
+              "required": true,
+              "impact_score": 3
+            }
+          ]
+        },
+        "admin": {
+          "name": "Administration",
+          "questions": [
+            {
+              "id": "billing_process",
+              "label_es": "¿Cómo gestionas la facturación, cobros y contratos?",
+              "label_en": "How do you manage invoicing, collections, and contracts?",
+              "type": "select",
+              "options": [
+                { "value": "manual", "label_es": "Manual (genero PDF y envío emails uno por uno)", "label_en": "Manual (I generate PDFs and send emails one by one)" },
+                { "value": "semi_automated", "label_es": "Semi-automático (uso pasarelas pero el contrato es manual)", "label_en": "Semi-automated (I use gateways but contracts are manual)" },
+                { "value": "fully_automated", "label_es": "Totalmente automático (suscripciones auto-sincronizadas)", "label_en": "Fully automated (auto-synced subscriptions)" }
+              ],
+              "required": true,
+              "impact_score": 4
+            },
+            {
+              "id": "data_silos",
+              "label_es": "¿Tus herramientas administrativas (facturas, CRM, operaciones) se comunican entre sí?",
+              "label_en": "Do your admin tools (invoicing, CRM, operations) communicate with each other?",
+              "type": "select",
+              "options": [
+                { "value": "no", "label_es": "No, tengo que copiar y pegar datos manualmente", "label_en": "No, I have to copy/paste data manually" },
+                { "value": "zapier", "label_es": "Sí, mediante integraciones básicas (Zapier, Make)", "label_en": "Yes, using basic integrations (Zapier, Make)" },
+                { "value": "native", "label_es": "Sí, están integradas de manera nativa", "label_en": "Yes, they are natively integrated" }
+              ],
+              "required": true,
+              "impact_score": 4
+            }
+          ]
+        }
+      }
+    }
+  }
+}

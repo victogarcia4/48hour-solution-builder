@@ -27,6 +27,7 @@ export default function Home() {
             <a href="#team" className="hover:underline decoration-4 underline-offset-4">{t('navbar.team')}</a>
             <a href="#pricing" className="hover:underline decoration-4 underline-offset-4">{t('navbar.pricing')}</a>
             <a href="#faq" className="hover:underline decoration-4 underline-offset-4">{t('navbar.faq')}</a>
+            <a href="/consultoria" className="hover:underline decoration-4 underline-offset-4 text-black">Consultor<span className="text-purple-600 text-[1.25em] ml-0.5 inline-block">IA</span></a>
             <LanguageToggle />
             <a href="#funnel" className="brutal-btn bg-brutal-yellow py-2 px-6 text-xs">
               {t('navbar.cta')}
