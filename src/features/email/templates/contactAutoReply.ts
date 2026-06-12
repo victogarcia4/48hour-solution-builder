@@ -14,7 +14,7 @@ export function contactAutoReplyHtml({
       <table width="560" cellpadding="0" cellspacing="0" style="border:3px solid #000000;max-width:560px;width:100%;">
         <!-- Header -->
         <tr><td style="background:#000000;padding:20px 32px;">
-          <p style="margin:0;color:#ffffff;font-size:20px;font-weight:900;letter-spacing:-1px;">48H STUDIO</p>
+          <p style="margin:0;color:#ffffff;font-size:20px;font-weight:900;letter-spacing:-1px;">48H LIVE</p>
         </td></tr>
         <!-- Body -->
         <tr><td style="padding:32px;">
@@ -40,7 +40,7 @@ export function contactAutoReplyHtml({
             You're receiving this because you submitted the contact form at
             <a href="${siteUrl}" style="color:#000000;">${siteUrl.replace('https://', '')}</a>.
           </p>
-          <p style="margin:0;font-size:12px;color:#666666;text-align:center;">48H Studio &middot; info@48hours.live</p>
+          <p style="margin:0;font-size:12px;color:#666666;text-align:center;">48H Live &middot; info@48hours.live</p>
         </td></tr>
       </table>
     </td></tr>

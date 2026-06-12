@@ -209,7 +209,7 @@ export async function saveContactMessageAction(
       await Promise.all([
         sendEmail({
           to: input.email,
-          subject: 'We got your message — 48H Studio',
+          subject: 'We got your message — 48H Live',
           html: contactAutoReplyHtml({
             userName: input.name.split(' ')[0],
             siteUrl: SITE_URL,

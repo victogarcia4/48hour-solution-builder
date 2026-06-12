@@ -413,8 +413,8 @@ function ScheduleStage({ lang, answers, addons, onBack }: {
         </h2>
         <p className="font-medium text-gray-600 mb-6 max-w-sm mx-auto">
           {lang === 'es'
-            ? 'El equipo de 48H Studio se pondrá en contacto en menos de 24 horas para afinar tu solicitud.'
-            : 'The 48H Studio team will reach out within 24 hours to finalize your request.'}
+            ? 'El equipo de 48H Live se pondrá en contacto en menos de 24 horas para afinar tu solicitud.'
+            : 'The 48H Live team will reach out within 24 hours to finalize your request.'}
         </p>
         {addons.length > 0 && (
           <div className="border-4 border-black text-left p-4 mb-6 max-w-sm mx-auto">

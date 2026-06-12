@@ -327,7 +327,7 @@ export default function AdminPage() {
       {/* Sidebar */}
       <aside className="w-64 bg-black text-white p-8 hidden md:flex flex-col">
         <h2 className="text-2xl font-black uppercase mb-12 tracking-tighter">
-          48H STUDIO<br />
+          48H LIVE<br />
           <span className="text-brutal-yellow">ADMIN</span>
         </h2>
         <nav className="space-y-4">
