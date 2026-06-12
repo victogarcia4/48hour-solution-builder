@@ -40,7 +40,7 @@ export function contactAutoReplyHtml({
             You're receiving this because you submitted the contact form at
             <a href="${siteUrl}" style="color:#000000;">${siteUrl.replace('https://', '')}</a>.
           </p>
-          <p style="margin:0;font-size:12px;color:#666666;text-align:center;">48H Live &middot; info@48hours.live</p>
+          <p style="margin:0;font-size:12px;color:#666666;text-align:center;">48H Live &middot; hello@48hours.live</p>
         </td></tr>
       </table>
     </td></tr>

@@ -12,7 +12,7 @@ export function getResendClient(): Resend {
 }
 
 const fromName = process.env.RESEND_FROM_NAME || '48H Live';
-const fromEmail = process.env.RESEND_FROM_EMAIL || 'info@48hours.live';
+const fromEmail = process.env.RESEND_FROM_EMAIL || 'hello@48hours.live';
 
 export const EMAIL_FROM = `${fromName} <${fromEmail}>`;
 export const NOTIFY_EMAIL = fromEmail;

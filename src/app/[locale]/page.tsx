@@ -107,7 +107,7 @@ export default function Home() {
             <a href="#" className="hover:text-brutal-pink transition-colors">{t('footer.privacy')}</a>
             <a href="#" className="hover:text-brutal-pink transition-colors">{t('footer.terms')}</a>
             <a href="#contact" className="hover:text-brutal-pink transition-colors">{t('footer.contact')}</a>
-            <a href="mailto:info@48hours.live" className="hover:text-brutal-pink transition-colors normal-case">{t('footer.email')}</a>
+            <a href="mailto:hello@48hours.live" className="hover:text-brutal-pink transition-colors normal-case">{t('footer.email')}</a>
           </div>
           <div className="font-bold text-xs uppercase tracking-tighter">
             {t('footer.copyright')}
