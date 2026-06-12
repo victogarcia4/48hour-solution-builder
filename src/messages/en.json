@@ -140,7 +140,7 @@
     "plans": {
       "starter": {
         "name": "Starter Landing",
-        "price": "$650",
+        "price": "$500",
         "bestFor": "Professionals & Small Biz",
         "features": [
           "Finished landing page",
@@ -153,7 +153,7 @@
       },
       "store": {
         "name": "Online Store",
-        "price": "$1,850",
+        "price": "$1,000",
         "bestFor": "Selling products online",
         "features": [
           "Basic multipage site",
@@ -166,7 +166,7 @@
       },
       "platform": {
         "name": "Platform Lite",
-        "price": "$3,950+",
+        "price": "$2,000",
         "bestFor": "Custom business tools",
         "features": [
           "Multipage website",
@@ -179,7 +179,7 @@
       },
       "consultoria": {
         "name": "ConsultorIA",
-        "price": "$850",
+        "price": "$650",
         "bestFor": "AI & Process Strategic Audit",
         "features": [
           "Deep 4-pillar audit",
@@ -188,6 +188,19 @@
           "AI optimization roadmap",
           "Delivered in less than 48 hours",
           "Strategic onboarding session"
+        ]
+      },
+      "ugc": {
+        "name": "UGC Content Creation",
+        "price": "$350",
+        "bestFor": "Most popular UGC package",
+        "features": [
+          "2 photos in 2K quality",
+          "1 video (15 seconds)",
+          "UGC-style content for your brand",
+          "Optimized for TikTok, Reels & Shorts",
+          "Ad-ready formats",
+          "Other options: ask us"
         ]
       }
     }

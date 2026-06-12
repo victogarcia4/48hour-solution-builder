@@ -6,7 +6,7 @@ import { useTranslations } from 'next-intl';
 export const Pricing = () => {
   const t = useTranslations('pricing');
 
-  const planKeys = ['consultoria', 'starter', 'store', 'platform'] as const;
+  const planKeys = ['consultoria', 'starter', 'store', 'platform', 'ugc'] as const;
 
   return (
     <section id="pricing" className="bg-brutal-cyan py-24 px-6 border-b-4 border-black">
@@ -22,9 +22,10 @@ export const Pricing = () => {
         </div>
 
         {/* Pricing Cards Grid */}
-        <div className="grid md:grid-cols-4 gap-8 mb-16">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-8 xl:gap-6 mb-16">
           {planKeys.map((key) => {
             const isConsultoria = key === 'consultoria';
+            const isUgc = key === 'ugc';
             return (
               <div 
                 key={key} 
@@ -33,7 +34,7 @@ export const Pricing = () => {
                 }`}
               >
                 <div className="space-y-6">
-                  {isConsultoria && (
+                  {(isConsultoria || isUgc) && (
                     <span className="inline-block bg-black text-white text-xs font-black px-2.5 py-1 uppercase rounded tracking-wider">
                       Nuevo / New
                     </span>

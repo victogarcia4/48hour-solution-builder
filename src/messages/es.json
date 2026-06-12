@@ -140,7 +140,7 @@
     "plans": {
       "starter": {
         "name": "Landing Inicial",
-        "price": "$650",
+        "price": "$500",
         "bestFor": "Profesionales y Pequeños Negocios",
         "features": [
           "Página de destino terminada",
@@ -153,7 +153,7 @@
       },
       "store": {
         "name": "Tienda en Línea",
-        "price": "$1,850",
+        "price": "$1,000",
         "bestFor": "Vender productos en línea",
         "features": [
           "Sitio multipágina básico",
@@ -166,7 +166,7 @@
       },
       "platform": {
         "name": "Plataforma Lite",
-        "price": "$3,950+",
+        "price": "$2,000",
         "bestFor": "Herramientas comerciales personalizadas",
         "features": [
           "Sitio web multipágina",
@@ -179,7 +179,7 @@
       },
       "consultoria": {
         "name": "ConsultorIA",
-        "price": "$850",
+        "price": "$650",
         "bestFor": "Auditoría Estratégica de Procesos e IA",
         "features": [
           "Auditoría profunda de 4 pilares",
@@ -188,6 +188,19 @@
           "Roadmap de optimización de IA",
           "Entregado en menos de 48 horas",
           "Sesión de onboarding estratégica"
+        ]
+      },
+      "ugc": {
+        "name": "Creación de Contenido UGC",
+        "price": "$350",
+        "bestFor": "Paquete UGC más popular",
+        "features": [
+          "2 fotos en calidad 2K",
+          "1 video de 15 segundos",
+          "Contenido estilo UGC para tu marca",
+          "Optimizado para TikTok, Reels y Shorts",
+          "Formatos listos para anuncios",
+          "Otras opciones: consultar"
         ]
       }
     }

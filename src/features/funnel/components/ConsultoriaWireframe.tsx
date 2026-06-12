@@ -42,8 +42,8 @@ export default function ConsultoriaWireframe() {
     data_silos: 'no',
   });
 
-  // Current active module in Phase B
-  const [activeModuleIndex, setActiveModuleIndex] = useState(0);
+  // Current active question in Phase B (one question per page)
+  const [activeQuestionIndex, setActiveQuestionIndex] = useState(0);
   const [onboardingSubStep, setOnboardingSubStep] = useState<'phase_a' | 'phase_b'>('phase_a');
 
   // Copy translations dictionary
@@ -126,6 +126,14 @@ export default function ConsultoriaWireframe() {
 
   const currentCopy = copy[lang];
   const modulesList = ['marketing', 'sales', 'delivery', 'admin'] as const;
+
+  // Flattened Phase B question list: one page per question across the 4 pillars
+  const phaseBQuestions = modulesList.flatMap((moduleKey) =>
+    ((questionsData.phases.phase_b.modules as any)[moduleKey].questions as any[]).map((question) => ({
+      moduleKey,
+      question,
+    }))
+  );
 
   // Onboarding logic helper functions
   const handleInputChange = (id: string, value: any) => {
@@ -425,10 +433,10 @@ export default function ConsultoriaWireframe() {
               <div className="border-4 border-black bg-zinc-950 p-6 rounded-2xl shadow-[4px_4px_0px_rgba(0,0,0,1)] space-y-4">
                 <div className="flex justify-between items-center">
                   <h3 className="font-black text-lg uppercase tracking-wide">
-                    {onboardingSubStep === 'phase_a' ? currentCopy.phaseA : `${currentCopy.phaseB}: ${modulesList[activeModuleIndex].toUpperCase()}`}
+                    {onboardingSubStep === 'phase_a' ? currentCopy.phaseA : `${currentCopy.phaseB}: ${phaseBQuestions[activeQuestionIndex].moduleKey.toUpperCase()}`}
                   </h3>
                   <span className="font-black text-xs bg-purple-900 text-purple-300 px-3 py-1 rounded-full uppercase">
-                    {onboardingSubStep === 'phase_a' ? '1 / 2' : `${activeModuleIndex + 1} / 4`}
+                    {onboardingSubStep === 'phase_a' ? `1 / ${phaseBQuestions.length + 1}` : `${activeQuestionIndex + 2} / ${phaseBQuestions.length + 1}`}
                   </span>
                 </div>
 
@@ -438,8 +446,8 @@ export default function ConsultoriaWireframe() {
                     className="bg-purple-500 h-full transition-all duration-300"
                     style={{
                       width: onboardingSubStep === 'phase_a'
-                        ? '20%'
-                        : `${30 + (activeModuleIndex * 17.5)}%`
+                        ? `${(1 / (phaseBQuestions.length + 1)) * 100}%`
+                        : `${((activeQuestionIndex + 2) / (phaseBQuestions.length + 1)) * 100}%`
                     }}
                   />
                 </div>
@@ -474,8 +482,8 @@ export default function ConsultoriaWireframe() {
                                 key={opt.value}
                                 onClick={() => handleInputChange(q.id, opt.value)}
                                 className={`w-full text-left p-4 rounded-xl border-2 font-bold transition flex justify-between items-center ${formAnswers[q.id] === opt.value
-                                    ? 'border-purple-500 bg-purple-950/20 text-white'
-                                    : 'border-black bg-zinc-900 text-gray-400 hover:bg-zinc-800'
+                                  ? 'border-purple-500 bg-purple-950/20 text-white'
+                                  : 'border-black bg-zinc-900 text-gray-400 hover:bg-zinc-800'
                                   }`}
                               >
                                 <span>{lang === 'es' ? opt.label_es : opt.label_en}</span>
@@ -489,89 +497,86 @@ export default function ConsultoriaWireframe() {
                   </div>
                 )}
 
-                {/* Phase B: Deep-Dive Audit Modules */}
+                {/* Phase B: Deep-Dive Audit — one question per page */}
                 {onboardingSubStep === 'phase_b' && (
                   <div className="space-y-8">
                     {(() => {
-                      const currentModuleKey = modulesList[activeModuleIndex];
-                      const moduleQuestions = (questionsData.phases.phase_b.modules as any)[currentModuleKey].questions;
+                      const { moduleKey: currentModuleKey, question: q } = phaseBQuestions[activeQuestionIndex];
 
                       return (
-                        <div className="space-y-6">
+                        <div key={q.id} className="space-y-6">
                           <h4 className="text-2xl font-black uppercase text-yellow-300 border-b-2 border-black pb-2 flex items-center gap-2">
                             <Sparkles size={20} />
                             {currentModuleKey.toUpperCase()}
                           </h4>
 
-                          {moduleQuestions.map((q: any) => (
-                            <div key={q.id} className="space-y-3">
-                              <label className="block text-lg font-black uppercase text-purple-300">
-                                {lang === 'es' ? q.label_es : q.label_en}
-                              </label>
+                          <div className="space-y-3">
+                            <label className="block text-lg font-black uppercase text-purple-300">
+                              {lang === 'es' ? q.label_es : q.label_en}
+                            </label>
 
-                              {q.type === 'select' && (
-                                <div className="grid gap-3">
-                                  {q.options.map((opt: any) => (
+                            {q.type === 'select' && (
+                              <div className="grid gap-3">
+                                {q.options.map((opt: any) => (
+                                  <button
+                                    key={opt.value}
+                                    onClick={() => handleInputChange(q.id, opt.value)}
+                                    className={`w-full text-left p-4 rounded-xl border-2 font-bold transition flex justify-between items-center ${formAnswers[q.id] === opt.value
+                                      ? 'border-purple-500 bg-purple-950/20 text-white'
+                                      : 'border-black bg-zinc-900 text-gray-400 hover:bg-zinc-800'
+                                      }`}
+                                  >
+                                    <span>{lang === 'es' ? opt.label_es : opt.label_en}</span>
+                                    {formAnswers[q.id] === opt.value && <CheckCircle2 className="text-purple-400 w-5 h-5" />}
+                                  </button>
+                                ))}
+                              </div>
+                            )}
+
+                            {q.type === 'multiselect' && (
+                              <div className="grid gap-3">
+                                {q.options.map((opt: any) => {
+                                  const isSelected = (formAnswers[q.id] || []).includes(opt.value);
+                                  return (
                                     <button
                                       key={opt.value}
-                                      onClick={() => handleInputChange(q.id, opt.value)}
-                                      className={`w-full text-left p-4 rounded-xl border-2 font-bold transition flex justify-between items-center ${formAnswers[q.id] === opt.value
-                                          ? 'border-purple-500 bg-purple-950/20 text-white'
-                                          : 'border-black bg-zinc-900 text-gray-400 hover:bg-zinc-800'
+                                      onClick={() => handleCheckboxChange(q.id, opt.value)}
+                                      className={`w-full text-left p-4 rounded-xl border-2 font-bold transition flex justify-between items-center ${isSelected
+                                        ? 'border-purple-500 bg-purple-950/20 text-white'
+                                        : 'border-black bg-zinc-900 text-gray-400 hover:bg-zinc-800'
                                         }`}
                                     >
                                       <span>{lang === 'es' ? opt.label_es : opt.label_en}</span>
-                                      {formAnswers[q.id] === opt.value && <CheckCircle2 className="text-purple-400 w-5 h-5" />}
+                                      {isSelected && <CheckCircle2 className="text-purple-400 w-5 h-5" />}
+                                    </button>
+                                  );
+                                })}
+                              </div>
+                            )}
+
+                            {q.type === 'scale' && (
+                              <div className="space-y-4">
+                                <div className="flex justify-between font-black text-xs text-gray-500">
+                                  <span>{q.labels["1"][lang]}</span>
+                                  <span>{q.labels["5"][lang]}</span>
+                                </div>
+                                <div className="grid grid-cols-5 gap-3">
+                                  {[1, 2, 3, 4, 5].map((val) => (
+                                    <button
+                                      key={val}
+                                      onClick={() => handleInputChange(q.id, val)}
+                                      className={`p-4 rounded-xl border-2 font-black text-xl transition ${formAnswers[q.id] === val
+                                        ? 'border-purple-500 bg-purple-500 text-white'
+                                        : 'border-black bg-zinc-900 text-gray-400 hover:bg-zinc-800'
+                                        }`}
+                                    >
+                                      {val}
                                     </button>
                                   ))}
                                 </div>
-                              )}
-
-                              {q.type === 'multiselect' && (
-                                <div className="grid gap-3">
-                                  {q.options.map((opt: any) => {
-                                    const isSelected = (formAnswers[q.id] || []).includes(opt.value);
-                                    return (
-                                      <button
-                                        key={opt.value}
-                                        onClick={() => handleCheckboxChange(q.id, opt.value)}
-                                        className={`w-full text-left p-4 rounded-xl border-2 font-bold transition flex justify-between items-center ${isSelected
-                                            ? 'border-purple-500 bg-purple-950/20 text-white'
-                                            : 'border-black bg-zinc-900 text-gray-400 hover:bg-zinc-800'
-                                          }`}
-                                      >
-                                        <span>{lang === 'es' ? opt.label_es : opt.label_en}</span>
-                                        {isSelected && <CheckCircle2 className="text-purple-400 w-5 h-5" />}
-                                      </button>
-                                    );
-                                  })}
-                                </div>
-                              )}
-
-                              {q.type === 'scale' && (
-                                <div className="space-y-4">
-                                  <div className="flex justify-between font-black text-xs text-gray-500">
-                                    <span>{q.labels["1"][lang]}</span>
-                                    <span>{q.labels["5"][lang]}</span>
-                                  </div>
-                                  <div className="grid grid-cols-5 gap-3">
-                                    {[1, 2, 3, 4, 5].map((val) => (
-                                      <button
-                                        key={val}
-                                        onClick={() => handleInputChange(q.id, val)}
-                                        className={`p-4 rounded-xl border-2 font-black text-xl transition ${formAnswers[q.id] === val
-                                            ? 'border-purple-500 bg-purple-500 text-white'
-                                            : 'border-black bg-zinc-900 text-gray-400 hover:bg-zinc-800'
-                                          }`}
-                                      >
-                                        {val}
-                                      </button>
-                                    ))}
-                                  </div>
-                                </div>
-                              )}
-                            </div>
-                          ))}
+                              </div>
+                            )}
+                          </div>
                         </div>
                       );
                     })()}
@@ -583,8 +588,8 @@ export default function ConsultoriaWireframe() {
                   <button
                     onClick={() => {
                       if (onboardingSubStep === 'phase_b') {
-                        if (activeModuleIndex > 0) {
-                          setActiveModuleIndex(prev => prev - 1);
+                        if (activeQuestionIndex > 0) {
+                          setActiveQuestionIndex(prev => prev - 1);
                         } else {
                           setOnboardingSubStep('phase_a');
                         }
@@ -600,10 +605,11 @@ export default function ConsultoriaWireframe() {
                   <button
                     onClick={() => {
                       if (onboardingSubStep === 'phase_a') {
+                        setActiveQuestionIndex(0);
                         setOnboardingSubStep('phase_b');
                       } else {
-                        if (activeModuleIndex < modulesList.length - 1) {
-                          setActiveModuleIndex(prev => prev + 1);
+                        if (activeQuestionIndex < phaseBQuestions.length - 1) {
+                          setActiveQuestionIndex(prev => prev + 1);
                         } else {
                           setCurrentStep('dashboard');
                         }
@@ -611,7 +617,7 @@ export default function ConsultoriaWireframe() {
                     }}
                     className="border-4 border-black bg-purple-600 px-8 py-3 rounded-xl font-black text-sm uppercase hover:bg-purple-700 transition shadow-[3px_3px_0px_rgba(0,0,0,1)]"
                   >
-                    {onboardingSubStep === 'phase_b' && activeModuleIndex === modulesList.length - 1
+                    {onboardingSubStep === 'phase_b' && activeQuestionIndex === phaseBQuestions.length - 1
                       ? currentCopy.finish
                       : currentCopy.next}
                   </button>
@@ -643,7 +649,7 @@ export default function ConsultoriaWireframe() {
                   <button
                     onClick={() => {
                       setOnboardingSubStep('phase_a');
-                      setActiveModuleIndex(0);
+                      setActiveQuestionIndex(0);
                       setCurrentStep('onboarding');
                     }}
                     className="flex items-center gap-2 border-2 border-black bg-zinc-900 hover:bg-zinc-800 px-4 py-2.5 rounded-xl font-black text-xs uppercase transition shadow-[2px_2px_0px_rgba(0,0,0,1)]"
