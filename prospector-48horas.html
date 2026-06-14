@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prospector IA — 48 Horas Live</title>
+<style>
+  :root{
+    --bg:#0a0e0c;
+    --panel:#0f1512;
+    --panel-2:#131b17;
+    --line:#1e2a24;
+    --line-2:#2a3a32;
+    --txt:#e8f0ec;
+    --txt-dim:#8aa39a;
+    --txt-faint:#5a6e66;
+    --green:#00ff88;
+    --green-dim:#0c3;
+    --green-glow:rgba(0,255,136,.15);
+    --amber:#ffb454;
+    --red:#ff5470;
+    --blue:#5ac8fa;
+    --mono:'IBM Plex Mono','SFMono-Regular',Menlo,monospace;
+    --disp:'Space Mono',monospace;
+  }
+  @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap');
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:var(--bg);color:var(--txt);font-family:var(--mono);font-size:14px;line-height:1.5}
+  body{
+    background-image:
+      radial-gradient(circle at 12% -10%,var(--green-glow),transparent 45%),
+      linear-gradient(var(--bg),var(--bg));
+    min-height:100vh;
+    padding:0 0 80px;
+  }
+  ::selection{background:var(--green);color:#000}
+  a{color:var(--green);text-decoration:none}
+
+  /* HEADER */
+  header{
+    border-bottom:1px solid var(--line);
+    padding:22px 28px;
+    display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;
+    background:linear-gradient(180deg,rgba(0,255,136,.03),transparent);
+  }
+  .brand{display:flex;align-items:center;gap:14px}
+  .logo{
+    width:42px;height:42px;border:1.5px solid var(--green);border-radius:6px;
+    display:grid;place-items:center;font-family:var(--disp);font-weight:700;color:var(--green);
+    font-size:13px;box-shadow:0 0 18px var(--green-glow);
+  }
+  .brand h1{font-family:var(--disp);font-size:17px;font-weight:700;letter-spacing:-.5px}
+  .brand p{font-size:11px;color:var(--txt-dim);letter-spacing:1px;text-transform:uppercase;margin-top:2px}
+  .badge{
+    font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--green);
+    border:1px solid var(--line-2);padding:5px 10px;border-radius:20px;background:var(--panel);
+  }
+
+  .wrap{max-width:1500px;margin:0 auto;padding:28px}
+
+  /* DISCLAIMER */
+  .disclaimer{
+    border:1px solid var(--line-2);border-left:3px solid var(--amber);
+    background:var(--panel);padding:12px 16px;border-radius:6px;margin-bottom:24px;
+    font-size:12px;color:var(--txt-dim);display:flex;gap:10px;align-items:flex-start;
+  }
+  .disclaimer b{color:var(--amber)}
+
+  /* STEPS NAV */
+  .steps{display:flex;gap:8px;margin-bottom:24px;flex-wrap:wrap}
+  .step-pill{
+    font-size:11px;color:var(--txt-faint);padding:6px 12px;border:1px solid var(--line);
+    border-radius:20px;letter-spacing:.5px;
+  }
+  .step-pill b{color:var(--green);margin-right:6px}
+
+  /* PANELS */
+  .panel{
+    background:var(--panel);border:1px solid var(--line);border-radius:10px;
+    padding:20px;margin-bottom:20px;
+  }
+  .panel h2{
+    font-family:var(--disp);font-size:13px;text-transform:uppercase;letter-spacing:1.5px;
+    color:var(--green);margin-bottom:14px;display:flex;align-items:center;gap:8px;
+  }
+  .panel h2 .n{
+    width:20px;height:20px;border:1px solid var(--green);border-radius:50%;
+    display:grid;place-items:center;font-size:10px;
+  }
+  .hint{font-size:11px;color:var(--txt-faint);margin-bottom:10px}
+
+  textarea,input,select{
+    width:100%;background:var(--bg);border:1px solid var(--line-2);color:var(--txt);
+    font-family:var(--mono);font-size:13px;padding:10px 12px;border-radius:6px;resize:vertical;
+  }
+  textarea:focus,input:focus,select:focus{outline:none;border-color:var(--green);box-shadow:0 0 0 3px var(--green-glow)}
+  textarea{min-height:120px}
+
+  .row{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+  .row > *{flex:0 0 auto}
+
+  /* BUTTONS */
+  button{
+    font-family:var(--mono);font-size:12px;font-weight:600;letter-spacing:.5px;
+    padding:10px 18px;border-radius:6px;border:1px solid var(--line-2);
+    background:var(--panel-2);color:var(--txt);cursor:pointer;transition:all .15s;
+    text-transform:uppercase;
+  }
+  button:hover{border-color:var(--green);color:var(--green)}
+  button:disabled{opacity:.4;cursor:not-allowed}
+  button.primary{background:var(--green);color:#000;border-color:var(--green)}
+  button.primary:hover{box-shadow:0 0 18px var(--green-glow);color:#000}
+  button.ghost{background:transparent}
+  button.sm{padding:5px 10px;font-size:11px}
+  button.danger:hover{border-color:var(--red);color:var(--red)}
+
+  /* API KEY */
+  .keyrow{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+  .keyrow input{flex:1;min-width:240px}
+  .keystatus{font-size:11px;padding:4px 10px;border-radius:20px;border:1px solid var(--line)}
+  .keystatus.ok{color:var(--green);border-color:var(--green-dim)}
+  .keystatus.no{color:var(--red);border-color:var(--red)}
+
+  /* STATS */
+  .stats{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:18px}
+  .stat{
+    background:var(--panel);border:1px solid var(--line);border-radius:8px;
+    padding:12px 18px;min-width:110px;
+  }
+  .stat .num{font-family:var(--disp);font-size:24px;font-weight:700;color:var(--green)}
+  .stat .lbl{font-size:10px;text-transform:uppercase;letter-spacing:1px;color:var(--txt-faint);margin-top:2px}
+
+  /* FILTERS */
+  .filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px;align-items:center}
+  .filters select{width:auto;padding:7px 10px;font-size:12px}
+  .filters .spacer{flex:1}
+
+  /* TABLE */
+  .tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:10px}
+  table{border-collapse:collapse;width:100%;min-width:1300px}
+  th{
+    background:var(--panel-2);text-align:left;font-size:10px;text-transform:uppercase;
+    letter-spacing:1px;color:var(--txt-dim);padding:11px 12px;border-bottom:1px solid var(--line-2);
+    position:sticky;top:0;white-space:nowrap;
+  }
+  td{padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top;font-size:12px}
+  tr:hover td{background:rgba(0,255,136,.02)}
+  td .acct{font-weight:600;color:var(--txt)}
+  td .acct a{display:block;font-size:10px;color:var(--txt-faint);font-weight:400}
+  td.in input,td.in textarea{font-size:11px;padding:6px 8px;min-height:auto}
+  td.in textarea{min-height:54px}
+  .out{font-size:11px;color:var(--txt-dim);line-height:1.45}
+  .out b{color:var(--txt)}
+  .msgbox{width:100%;min-height:90px;font-size:11px}
+  .chars{font-size:9px;color:var(--txt-faint);text-align:right;margin-top:2px}
+  .chars.over{color:var(--red)}
+
+  /* PRIORITY + STATUS TAGS */
+  .tag{font-size:9px;text-transform:uppercase;letter-spacing:.5px;padding:3px 8px;border-radius:20px;border:1px solid var(--line-2);display:inline-block;white-space:nowrap}
+  .tag.alto{color:var(--green);border-color:var(--green-dim)}
+  .tag.medio{color:var(--amber);border-color:var(--amber)}
+  .tag.bajo{color:var(--txt-faint)}
+  .tag.pendiente{color:var(--txt-dim)}
+  .tag.aprobado{color:var(--green);border-color:var(--green-dim)}
+  .tag.editado{color:var(--blue);border-color:var(--blue)}
+  .tag.descartado{color:var(--red);border-color:var(--red)}
+  .tag.enviado{color:#000;background:var(--green);border-color:var(--green)}
+  .tag.analizando{color:var(--amber);border-color:var(--amber);animation:pulse 1s infinite}
+  .tag.error{color:var(--red);border-color:var(--red)}
+  @keyframes pulse{50%{opacity:.4}}
+
+  .rowbtns{display:flex;flex-direction:column;gap:5px}
+  .empty{padding:60px;text-align:center;color:var(--txt-faint);font-size:13px}
+  .empty span{font-size:32px;display:block;margin-bottom:12px;opacity:.4}
+
+  .toolbar{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px;align-items:center}
+  .toolbar .spacer{flex:1}
+
+  footer{margin-top:40px;padding-top:20px;border-top:1px solid var(--line);font-size:11px;color:var(--txt-faint);text-align:center}
+
+  @media(max-width:680px){.wrap{padding:16px}header{padding:16px}}
+</style>
+</head>
+<body>
+<header>
+  <div class="brand">
+    <div class="logo">48H</div>
+    <div>
+      <h1>Prospector IA</h1>
+      <p>48 Horas Live · Análisis &amp; Outreach</p>
+    </div>
+  </div>
+  <div class="badge">● Sistema semi-automatizado</div>
+</header>
+
+<div class="wrap">
+
+  <div class="disclaimer">
+    <span>⚠️</span>
+    <div><b>Envío manual.</b> Esta herramienta NO entra a Instagram, NO hace scraping y NO envía DMs. Tú copias los datos visibles de cada cuenta y tú envías los mensajes aprobados. Mantén pocos contactos por día (10–20) para proteger tu cuenta.</div>
+  </div>
+
+  <div class="steps">
+    <div class="step-pill"><b>1</b>Pega URLs</div>
+    <div class="step-pill"><b>2</b>Captura datos visibles</div>
+    <div class="step-pill"><b>3</b>Analiza con IA</div>
+    <div class="step-pill"><b>4</b>Revisa y aprueba</div>
+    <div class="step-pill"><b>5</b>Exporta CSV → CRM</div>
+  </div>
+
+  <!-- API KEY -->
+  <div class="panel">
+    <h2><span class="n">K</span>Conexión IA</h2>
+    <p class="hint">Pega tu API key de OpenAI. Se guarda solo en la memoria de esta pestaña (no se envía a ningún lado salvo a OpenAI). Para producción, mueve la key a una función serverless de Netlify.</p>
+    <div class="keyrow">
+      <input id="apikey" type="password" placeholder="sk-..." autocomplete="off">
+      <select id="model" style="width:auto">
+        <option value="gpt-4o-mini">gpt-4o-mini (económico)</option>
+        <option value="gpt-4o">gpt-4o (mejor calidad)</option>
+      </select>
+      <span id="keystatus" class="keystatus no">sin key</span>
+    </div>
+  </div>
+
+  <!-- LOAD -->
+  <div class="panel">
+    <h2><span class="n">1</span>Cargar prospectos</h2>
+    <p class="hint">Pega los enlaces de Instagram, uno por línea. El handle se usará como nombre provisional.</p>
+    <textarea id="urls" placeholder="https://www.instagram.com/cuenta1&#10;https://www.instagram.com/cuenta2"></textarea>
+    <div class="row" style="margin-top:12px">
+      <button class="primary" onclick="loadUrls()">▸ Cargar lista</button>
+      <button class="ghost" onclick="loadSample()">Cargar ejemplo</button>
+      <button class="ghost danger" onclick="clearAll()">Vaciar todo</button>
+    </div>
+  </div>
+
+  <!-- STATS -->
+  <div class="stats" id="stats"></div>
+
+  <!-- TOOLBAR -->
+  <div class="toolbar">
+    <button class="primary" id="analyzeAll" onclick="analyzeAll()">⚡ Analizar todas las pendientes</button>
+    <div class="spacer"></div>
+    <button class="ghost" onclick="exportCSV()">⬇ Exportar CSV</button>
+    <label class="button ghost" style="display:inline-block;cursor:pointer;padding:10px 18px;border:1px solid var(--line-2);border-radius:6px;font-size:12px;text-transform:uppercase;font-weight:600">
+      ⬆ Importar CSV
+      <input type="file" accept=".csv" onchange="importCSV(event)" style="display:none">
+    </label>
+  </div>
+
+  <!-- FILTERS -->
+  <div class="filters">
+    <select id="fPrio" onchange="render()">
+      <option value="">Prioridad: todas</option>
+      <option value="alto">Alto</option><option value="medio">Medio</option><option value="bajo">Bajo</option>
+    </select>
+    <select id="fEstado" onchange="render()">
+      <option value="">Estado: todos</option>
+      <option value="pendiente">Pendiente</option><option value="aprobado">Aprobado</option>
+      <option value="editado">Editado</option><option value="descartado">Descartado</option>
+      <option value="enviado">Enviado</option>
+    </select>
+    <input id="fSearch" placeholder="Buscar…" style="width:auto" oninput="render()">
+  </div>
+
+  <!-- TABLE -->
+  <div class="tablewrap">
+    <table>
+      <thead><tr>
+        <th>Cuenta</th><th>Bio</th><th>Link</th><th>Contenido / Servicios</th><th>Notas</th>
+        <th>Nicho</th><th>Dolor</th><th>Oferta 48H</th><th>Mensaje (≤700)</th>
+        <th>Prio.</th><th>Estado</th><th>Acciones</th>
+      </tr></thead>
+      <tbody id="tbody"></tbody>
+    </table>
+  </div>
+  <div id="emptyState"></div>
+
+  <footer>
+    Prospector IA · 48 Horas Live · Sin scraping · Con revisión humana · Exporta y guarda tu CSV antes de cerrar
+  </footer>
+</div>
+
+<script>
+let rows = [];
+let counter = 0;
+
+// ---------- API KEY ----------
+const keyInput = document.getElementById('apikey');
+const keyStatus = document.getElementById('keystatus');
+keyInput.addEventListener('input',()=>{
+  if(keyInput.value.trim().startsWith('sk-')){keyStatus.textContent='key activa';keyStatus.className='keystatus ok';}
+  else{keyStatus.textContent='sin key';keyStatus.className='keystatus no';}
+});
+
+// ---------- LOAD ----------
+function handleFromUrl(u){
+  const m = u.trim().replace(/\/+$/,'').match(/instagram\.com\/([^\/?#]+)/i);
+  return m ? m[1] : u.trim();
+}
+function loadUrls(){
+  const lines = document.getElementById('urls').value.split('\n').map(s=>s.trim()).filter(Boolean);
+  let added=0;
+  lines.forEach(line=>{
+    const h = handleFromUrl(line);
+    if(!h) return;
+    if(rows.some(r=>r.handle.toLowerCase()===h.toLowerCase())) return; // dedupe
+    rows.push(blankRow(line.startsWith('http')?line:`https://www.instagram.com/${h}`,h));
+    added++;
+  });
+  document.getElementById('urls').value='';
+  render();
+  if(added===0) alert('No se agregaron cuentas nuevas (vacío o duplicadas).');
+}
+function blankRow(url,handle){
+  return {id:++counter,url,handle,bio:'',link:'',contenido:'',notas:'',
+    nicho:'',dolor:'',oferta:'',mensaje:'',prioridad:'',estado:'pendiente'};
+}
+function loadSample(){
+  document.getElementById('urls').value=
+`https://www.instagram.com/samys.delicious.desserts
+https://www.instagram.com/graidebeautystudio
+https://www.instagram.com/toppaellas
+https://www.instagram.com/adrianarubiorealtor
+https://www.instagram.com/todomigra`;
+}
+function clearAll(){ if(confirm('¿Vaciar toda la tabla? Exporta antes si quieres conservarla.')){rows=[];render();} }
+
+// ---------- FIELD EDIT ----------
+function edit(id,field,val){ const r=rows.find(x=>x.id===id); if(r){r[field]=val; if(field==='mensaje'&&r.estado==='aprobado')r.estado='editado'; updateCharCount(id);} }
+function updateCharCount(id){
+  const el=document.getElementById('chars-'+id), r=rows.find(x=>x.id===id);
+  if(el&&r){el.textContent=r.mensaje.length+' / 700';el.className='chars'+(r.mensaje.length>700?' over':'');}
+}
+function setEstado(id,e){ const r=rows.find(x=>x.id===id); if(r){r.estado=e;render();} }
+function delRow(id){ rows=rows.filter(x=>x.id!==id); render(); }
+function copyMsg(id){ const r=rows.find(x=>x.id===id); navigator.clipboard.writeText(r.mensaje); }
+
+// ---------- AI ----------
+async function analyzeRow(r){
+  const key=keyInput.value.trim();
+  if(!key.startsWith('sk-')){alert('Pega primero una API key válida de OpenAI.');return;}
+  r.estado='analizando'; render();
+  const sys=`Eres analista de prospectos para "48 Horas Live", agencia que crea soluciones digitales rápidas (landings, automatización, catálogos, sistemas de reservas/citas, WhatsApp Business, formularios). Respondes SOLO en JSON válido, sin markdown ni texto adicional.`;
+  const user=`Analiza esta cuenta de Instagram como prospecto.
+Nombre/handle: ${r.handle}
+Bio: ${r.bio||'(no provista)'}
+Link visible: ${r.link||'(ninguno)'}
+Contenido/servicios observados: ${r.contenido||'(no provisto)'}
+Notas: ${r.notas||'(ninguna)'}
+
+Devuelve JSON EXACTO con esta forma:
+{"nicho":"","que_vende":"","dolor_probable":"","oferta_48h":"","mensaje":"","prioridad":"alto|medio|bajo"}
+
+Reglas del "mensaje": en español, cálido y no invasivo, máximo 700 caracteres, menciona algo real de la cuenta, sigue la fórmula: observación específica + oportunidad detectada + propuesta concreta de 48 Horas Live + invitación ligera.`;
+  try{
+    const res=await fetch('https://api.openai.com/v1/chat/completions',{
+      method:'POST',
+      headers:{'Content-Type':'application/json','Authorization':'Bearer '+key},
+      body:JSON.stringify({
+        model:document.getElementById('model').value,
+        messages:[{role:'system',content:sys},{role:'user',content:user}],
+        temperature:0.7,
+        response_format:{type:'json_object'}
+      })
+    });
+    if(!res.ok){const e=await res.text();throw new Error(e);}
+    const data=await res.json();
+    let txt=data.choices[0].message.content.replace(/```json|```/g,'').trim();
+    const o=JSON.parse(txt);
+    r.nicho=o.nicho||''; r.dolor=o.dolor_probable||''; r.oferta=o.oferta_48h||'';
+    r.mensaje=o.mensaje||''; r.prioridad=(o.prioridad||'').toLowerCase();
+    r.contenido=r.contenido||o.que_vende||'';
+    r.estado='pendiente';
+  }catch(err){
+    console.error(err); r.estado='error';
+    alert('Error analizando @'+r.handle+': '+(err.message||err).slice(0,200));
+  }
+  render();
+}
+async function analyzeAll(){
+  const pend=rows.filter(r=>r.estado==='pendiente'||r.estado==='error');
+  if(!pend.length){alert('No hay filas pendientes.');return;}
+  const btn=document.getElementById('analyzeAll'); btn.disabled=true;
+  const CONC=3; let i=0;
+  async function worker(){ while(i<pend.length){ const r=pend[i++]; await analyzeRow(r); } }
+  await Promise.all([...Array(Math.min(CONC,pend.length))].map(worker));
+  btn.disabled=false;
+}
+
+// ---------- RENDER ----------
+function render(){
+  // stats
+  const total=rows.length;
+  const by=e=>rows.filter(r=>r.estado===e).length;
+  document.getElementById('stats').innerHTML=
+    [['Total',total],['Aprobados',by('aprobado')+by('editado')],
+     ['Pendientes',by('pendiente')],['Enviados',by('enviado')],
+     ['Alta prioridad',rows.filter(r=>r.prioridad==='alto').length]]
+    .map(([l,n])=>`<div class="stat"><div class="num">${n}</div><div class="lbl">${l}</div></div>`).join('');
+
+  // filters
+  const fp=document.getElementById('fPrio').value, fe=document.getElementById('fEstado').value,
+        fs=document.getElementById('fSearch').value.toLowerCase();
+  let view=rows.filter(r=>(!fp||r.prioridad===fp)&&(!fe||r.estado===fe)&&
+    (!fs||(r.handle+r.nicho+r.contenido+r.bio).toLowerCase().includes(fs)));
+
+  const tb=document.getElementById('tbody');
+  const empty=document.getElementById('emptyState');
+  if(!view.length){
+    tb.innerHTML='';
+    empty.innerHTML=`<div class="empty"><span>◇</span>${rows.length? 'Ningún prospecto coincide con el filtro.':'Pega URLs de Instagram arriba para empezar.'}</div>`;
+    return;
+  }
+  empty.innerHTML='';
+  tb.innerHTML=view.map(r=>`
+    <tr>
+      <td><div class="acct">@${r.handle}<a href="${r.url}" target="_blank">abrir perfil ↗</a></div></td>
+      <td class="in"><textarea placeholder="bio…" oninput="edit(${r.id},'bio',this.value)">${esc(r.bio)}</textarea></td>
+      <td class="in"><input placeholder="link…" value="${esc(r.link)}" oninput="edit(${r.id},'link',this.value)"></td>
+      <td class="in"><textarea placeholder="qué publica / vende…" oninput="edit(${r.id},'contenido',this.value)">${esc(r.contenido)}</textarea></td>
+      <td class="in"><textarea placeholder="notas…" oninput="edit(${r.id},'notas',this.value)">${esc(r.notas)}</textarea></td>
+      <td class="out"><b>${esc(r.nicho)||'—'}</b></td>
+      <td class="out">${esc(r.dolor)||'—'}</td>
+      <td class="out">${esc(r.oferta)||'—'}</td>
+      <td class="in">
+        <textarea class="msgbox" placeholder="mensaje…" oninput="edit(${r.id},'mensaje',this.value)">${esc(r.mensaje)}</textarea>
+        <div class="chars${r.mensaje.length>700?' over':''}" id="chars-${r.id}">${r.mensaje.length} / 700</div>
+      </td>
+      <td>${r.prioridad?`<span class="tag ${r.prioridad}">${r.prioridad}</span>`:'—'}</td>
+      <td><span class="tag ${r.estado}">${r.estado}</span></td>
+      <td><div class="rowbtns">
+        <button class="sm primary" onclick="analyzeRow(rows.find(x=>x.id===${r.id}))">Analizar</button>
+        <button class="sm" onclick="setEstado(${r.id},'aprobado')">✓ Aprobar</button>
+        <button class="sm" onclick="copyMsg(${r.id})">⧉ Copiar</button>
+        <button class="sm" onclick="setEstado(${r.id},'enviado')">▸ Enviado</button>
+        <button class="sm danger" onclick="setEstado(${r.id},'descartado')">✕ Descartar</button>
+        <button class="sm danger" onclick="delRow(${r.id})">🗑 Eliminar</button>
+      </div></td>
+    </tr>`).join('');
+}
+function esc(s){return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+
+// ---------- CSV ----------
+const COLS=['handle','url','bio','link','contenido','notas','nicho','dolor','oferta','mensaje','prioridad','estado'];
+function exportCSV(){
+  if(!rows.length){alert('No hay datos para exportar.');return;}
+  const q=v=>'"'+String(v||'').replace(/"/g,'""')+'"';
+  const csv=[COLS.join(',')].concat(rows.map(r=>COLS.map(c=>q(r[c])).join(','))).join('\n');
+  const blob=new Blob(['\ufeff'+csv],{type:'text/csv;charset=utf-8'});
+  const a=document.createElement('a');a.href=URL.createObjectURL(blob);
+  a.download='prospectos_48horas_'+new Date().toISOString().slice(0,10)+'.csv';a.click();
+}
+function importCSV(ev){
+  const f=ev.target.files[0]; if(!f)return;
+  const rd=new FileReader();
+  rd.onload=e=>{
+    try{
+      const lines=parseCSV(e.target.result);
+      const head=lines[0].map(h=>h.trim());
+      const out=lines.slice(1).filter(l=>l.length>1).map(l=>{
+        const o=blankRow('','');
+        head.forEach((h,i)=>{if(COLS.includes(h))o[h]=l[i]||'';});
+        o.url=o.url||`https://www.instagram.com/${o.handle}`;
+        o.estado=o.estado||'pendiente';
+        return o;
+      });
+      rows=out; counter=rows.length; render();
+      alert('Importadas '+rows.length+' filas.');
+    }catch(err){alert('CSV inválido: '+err.message);}
+  };
+  rd.readAsText(f); ev.target.value='';
+}
+function parseCSV(text){
+  const rows=[];let row=[],cur='',q=false;
+  for(let i=0;i<text.length;i++){const c=text[i];
+    if(q){if(c==='"'){if(text[i+1]==='"'){cur+='"';i++;}else q=false;}else cur+=c;}
+    else{if(c==='"')q=true;else if(c===','){row.push(cur);cur='';}else if(c==='\n'){row.push(cur);rows.push(row);row=[];cur='';}else if(c!=='\r')cur+=c;}
+  }
+  if(cur||row.length){row.push(cur);rows.push(row);}
+  return rows;
+}
+render();
+</script>
+</body>
+</html>

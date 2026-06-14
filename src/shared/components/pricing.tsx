@@ -77,6 +77,58 @@ export const Pricing = () => {
                   </ul>
                 </div>
 
+                {key === 'starter' && (
+                  <div className="relative mt-6">
+                    <div
+                      style={{
+                        background: '#FF2D78',
+                        border: '3px solid #000',
+                        boxShadow: '4px 4px 0px #000',
+                        transform: 'rotate(-1.5deg)',
+                        padding: '10px 16px',
+                        display: 'inline-block',
+                        width: '100%',
+                      }}
+                    >
+                      <p
+                        style={{
+                          fontFamily: "'Georgia', 'Times New Roman', serif",
+                          fontSize: '1.15rem',
+                          fontWeight: 900,
+                          color: '#fff',
+                          textTransform: 'uppercase',
+                          letterSpacing: '0.04em',
+                          lineHeight: 1.3,
+                          margin: 0,
+                        }}
+                      >
+                        💥 OR RENT IT FOR{' '}
+                        <span
+                          style={{
+                            fontSize: '1.5rem',
+                            color: '#FFE500',
+                            textShadow: '1px 1px 0 #000',
+                          }}
+                        >
+                          $150/mo
+                        </span>
+                        <br />
+                        <span
+                          style={{
+                            fontSize: '0.7rem',
+                            fontFamily: "'Arial', sans-serif",
+                            fontWeight: 700,
+                            color: '#ffe0eb',
+                            letterSpacing: '0.08em',
+                          }}
+                        >
+                          No upfront. No excuses. Just results.
+                        </span>
+                      </p>
+                    </div>
+                  </div>
+                )}
+
                 <div className="pt-8">
                   <a 
                     href={isConsultoria ? "/consultoria" : "/presale"} 
