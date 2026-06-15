@@ -1,4 +1,5 @@
 import { useTranslations } from 'next-intl';
+import Link from 'next/link';
 import { Hero } from "@/shared/components/hero";
 import { Problem } from "@/shared/components/problem";
 import { Promise } from "@/shared/components/promise";
@@ -19,9 +20,13 @@ export default function Home() {
       {/* Navbar */}
       <nav className="bg-white border-b-4 border-black px-8 py-4 sticky top-0 z-50">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
-          <span className="bg-black text-white px-4 py-2 font-black text-xl tracking-tighter shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none cursor-default transition-all uppercase">
-            {t('navbar.logo')}
-          </span>
+          <Link href="/">
+            <img
+              src="/logo OG 48 hours.png"
+              alt="48 Hours"
+              className="h-12 w-12 object-contain border-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all cursor-pointer"
+            />
+          </Link>
           <div className="hidden md:flex items-center gap-8 font-black uppercase text-sm">
             <a href="#how-it-works" className="hover:underline decoration-4 underline-offset-4">{t('navbar.howItWorks')}</a>
             <a href="#team" className="hover:underline decoration-4 underline-offset-4">{t('navbar.team')}</a>
@@ -100,8 +105,14 @@ export default function Home() {
       <footer className="bg-white py-12 px-8 border-t-4 border-black">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
           <div className="flex flex-col gap-2">
-            <span className="font-black text-3xl tracking-tighter uppercase">{t('footer.logo')}</span>
-            <p className="text-sm font-bold opacity-60 uppercase tracking-widest">{t('footer.tagline')}</p>
+            <Link href="/">
+              <img
+                src="/logo OG 48 hours.png"
+                alt="48 Hours"
+                className="h-16 w-16 object-contain border-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all cursor-pointer"
+              />
+            </Link>
+            <p className="text-sm font-bold opacity-60 uppercase tracking-widest mt-2">{t('footer.tagline')}</p>
           </div>
           <div className="flex flex-wrap gap-8 font-black uppercase text-sm">
             <a href="/privacy" className="hover:text-brutal-pink transition-colors">{t('footer.privacy')}</a>
