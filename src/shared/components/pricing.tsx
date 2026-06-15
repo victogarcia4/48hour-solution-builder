@@ -102,7 +102,7 @@ export const Pricing = () => {
                           margin: 0,
                         }}
                       >
-                        💥 OR RENT IT FOR{' '}
+                        OR RENT IT FOR{' '}
                         <span
                           style={{
                             fontSize: '1.5rem',
