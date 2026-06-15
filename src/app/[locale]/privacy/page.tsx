@@ -11,13 +11,15 @@ export default function PrivacyPage() {
       {/* Navbar */}
       <nav className="bg-white border-b-4 border-black px-8 py-4 sticky top-0 z-50">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
-          <Link href="/">
-            <img
-              src="/logo OG 48 hours.png"
-              alt="48 Hours"
-              className="h-12 w-12 object-contain border-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all cursor-pointer"
-            />
-          </Link>
+          <div className="relative w-12 h-12 md:w-16 md:h-16">
+            <Link href="/" className="absolute left-0 top-1/2 -translate-y-1/2 z-50">
+              <img
+                src="/logo OG 48 hours.png"
+                alt="48 Hours"
+                className="h-20 w-20 md:h-24 md:w-24 max-w-none object-contain border-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all cursor-pointer bg-white"
+              />
+            </Link>
+          </div>
           <Link href="/" className="font-black uppercase text-sm hover:underline decoration-4 underline-offset-4">
             ← Back to Home
           </Link>
@@ -206,7 +208,7 @@ export default function PrivacyPage() {
             <img
               src="/logo OG 48 hours.png"
               alt="48 Hours"
-              className="h-12 w-12 object-contain border-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all cursor-pointer"
+              className="h-20 w-20 md:h-24 md:w-24 object-contain border-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all cursor-pointer bg-white"
             />
           </Link>
           <div className="flex gap-8 font-black uppercase text-sm">
